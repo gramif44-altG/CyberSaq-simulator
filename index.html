@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactCheck Simulator - Қауіпсіздік Симуляторы</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #F4F4F0;
+            color: #1E1E1E;
+        }
+        .brutal-box {
+            border: 3px solid #1E1E1E;
+            box-shadow: 4px 4px 0px 0px #1E1E1E;
+        }
+        .brutal-btn {
+            border: 3px solid #1E1E1E;
+            box-shadow: 3px 3px 0px 0px #1E1E1E;
+            transition: all 0.1s ease;
+        }
+        .brutal-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1E1E1E;
+        }
+        .brutal-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1E1E1E;
+        }
+    </style>
+</head>
+<body class="p-3 sm:p-6 min-h-screen">
+
+    <div class="max-w-6xl mx-auto space-y-6">
+
+        <!-- Header / Шапка -->
+        <header class="brutal-box bg-[#FFE500] p-4 sm:p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="font-black text-2xl sm:text-4xl uppercase tracking-tight flex items-center gap-2">
+                    🛡️ FACTCHECK SIMULATOR
+                </h1>
+                <p id="t-subtitle" class="font-bold text-xs sm:text-sm mt-1">
+                    Интерактивный симулятор анализа угроз и медиаграмотности
+                </p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Языки -->
+                <div class="flex space-x-1 bg-white p-1 border-2 border-[#1E1E1E]">
+                    <button id="lang-kz" onclick="changeLanguage('kz')" class="px-2 py-1 font-bold text-xs uppercase transition-all">KZ</button>
+                    <button id="lang-ru" onclick="changeLanguage('ru')" class="px-2 py-1 font-bold text-xs uppercase transition-all">RU</button>
+                    <button id="lang-en" onclick="changeLanguage('en')" class="px-2 py-1 font-bold text-xs uppercase transition-all">EN</button>
+                </div>
+
+                <!-- XP -->
+                <div class="brutal-box bg-white px-3 py-1.5 flex items-center gap-2">
+                    <span id="t-score-label" class="font-black text-xs uppercase">Рейтинг:</span>
+                    <span id="user-score" class="font-black text-base text-[#FF6B6B]">1000 XP</span>
+                </div>
+
+                <!-- Дүкен / Магазин -->
+                <button onclick="openShop()" class="brutal-btn bg-white font-black text-xs uppercase px-3 py-2 cursor-pointer flex items-center gap-1">
+                    🛒 <span id="t-shop-btn">Магазин</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Главный экран -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Досье -->
+            <div class="lg:col-span-2 brutal-box bg-white p-4 sm:p-6 flex flex-col justify-between space-y-6">
+                
+                <div>
+                    <!-- Шапка досье -->
+                    <div class="flex justify-between items-center border-b-3 border-[#1E1E1E] pb-3 mb-4">
+                        <span id="case-category" class="font-black text-xs uppercase bg-[#FFE500] px-2.5 py-1 border-2 border-[#1E1E1E]">
+                            Фишинг
+                        </span>
+                        <span id="case-number" class="font-mono font-bold text-xs text-gray-600">
+                            ДОСЬЕ #1
+                        </span>
+                    </div>
+
+                    <!-- URL адрес -->
+                    <div class="bg-gray-100 p-2.5 border-2 border-[#1E1E1E] font-mono text-xs break-all mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-link text-gray-500"></i>
+                        <span id="case-url" class="font-bold">https://example.com</span>
+                    </div>
+
+                    <!-- Контент кейса -->
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-[#FFE500]/20 border-2 border-[#1E1E1E] shrink-0">
+                                <i id="case-icon" class="fa-solid fa-shield-cat text-3xl sm:text-4xl"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h2 id="case-title" class="font-black text-base sm:text-xl leading-snug">
+                                    Загрузка кейса...
+                                </h2>
+                                <p id="case-description" class="text-xs sm:text-sm font-mono text-gray-700 leading-relaxed">
+                                    Описание кейса...
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- ШАГ 2: Визуальный медиа-симулятор (SMS / Пост / Форма) -->
+                        <div id="media-preview" class="border-2 border-[#1E1E1E] bg-[#F8F8F8] p-3 rounded-none font-mono text-xs">
+                            <!-- Динамически наполняется в app.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Инструменты верификации -->
+                <div class="space-y-3 pt-4 border-t-3 border-[#1E1E1E]">
+                    <span id="t-tools-label" class="block font-black text-xs uppercase text-gray-600">
+                        🛠️ Инструменты верификации:
+                    </span>
+                    <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+                        <button onclick="inspectDomain()" class="brutal-btn bg-white hover:bg-gray-100 p-2 text-left font-bold flex items-center justify-between cursor-pointer">
+                            <span id="t-whois-btn">WHOIS Экспертиза</span>
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                        <button onclick="inspectSSL()" class="brutal-btn bg-white hover:bg-gray-100 p-2 text-left font-bold flex items-center justify-between cursor-pointer">
+                            <span id="t-ssl-btn">SSL-сертификат</span>
+                            <i class="fa-solid fa-lock"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Кнопки выбора решения -->
+                <div class="space-y-2 pt-2">
+                    <span id="t-verdict-label" class="block font-black text-xs uppercase">
+                        ⚖️ Вынесите вердикт эксперта:
+                    </span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="checkAnswer(false)" class="brutal-btn bg-[#FF6B6B] hover:bg-red-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span id="t-btn-fake">Это Фейк / Угроза</span>
+                        </button>
+                        <button onclick="checkAnswer(true)" class="brutal-btn bg-[#6BCB77] hover:bg-green-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span id="t-btn-real">Подлинный контент</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Правая колонка: Аналитика и Карта угроз -->
+            <div class="space-y-6">
+                <!-- График 1: Карта угроз -->
+                <div class="brutal-box bg-white p-4 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 id="t-threats-title" class="font-black text-xs sm:text-sm uppercase flex items-center gap-2">
+                            📊 Карта киберугроз РК
+                        </h3>
+                        <button onclick="openThreatsReport()" class="text-[10px] font-mono font-bold bg-[#FFE500] px-2 py-0.5 border border-[#1E1E1E] hover:underline cursor-pointer">
+                            KZ-CERT ↗
+                        </button>
+                    </div>
+                    <div class="h-40 relative">
+                        <canvas id="threatsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- График 2: Точность игрока -->
+                <div class="brutal-box bg-white p-4 space-y-3">
+                    <h3 id="t-accuracy-title" class="font-black text-xs sm:text-sm uppercase flex items-center gap-2">
+                        🎯 Ваша Точность Анализа
+                    </h3>
+                    <div class="h-40 relative">
+                        <canvas id="accuracyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- ШАГ 2: Полезные ссылки и Проверка еGov/Киберпол -->
+                <div class="brutal-box bg-[#1E1E1E] text-white p-4 space-y-3 font-mono text-xs">
+                    <p class="font-black text-yellow-400 uppercase text-xs flex items-center gap-1">
+                        📢 Киберпол РК & eGov
+                    </p>
+                    <p class="text-[11px] leading-relaxed text-gray-300">
+                        Подозрительный сайт или сообщение? Проверьте ресурс через официальные базы:
+                    </p>
+                    <div class="space-y-2 pt-1">
+                        <a href="https://cert.gov.kz" target="_blank" class="block bg-white/10 hover:bg-white/20 p-2 border border-white/30 text-white text-[11px] font-bold text-center">
+                            🛡️ Компьютерная служба KZ-CERT
+                        </a>
+                        <a href="https://egov.kz" target="_blank" class="block bg-white/10 hover:bg-white/20 p-2 border border-white/30 text-white text-[11px] font-bold text-center">
+                            🏛️ Официальный портал eGov.kz
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Конструктор кейсов -->
+        <section class="brutal-box bg-white p-4 sm:p-6 space-y-4">
+            <h2 id="t-add-title" class="font-black text-base sm:text-lg uppercase flex items-center gap-2">
+                ➕ Кейс конструкторы
+            </h2>
+            <form id="add-case-form" onsubmit="addNewCase(event)" class="space-y-4 font-mono text-xs">
+                <div>
+                    <label data-i18n="formTitleLabel" class="block font-bold mb-1">Заголовок / Новость:</label>
+                    <input type="text" id="new-title" data-i18n-ph="formTitlePh" placeholder="Мысалы: Барлық азаматтарға 50 000 ₸ төлем" required class="w-full p-2.5 bg-white border-2 border-[#1E1E1E] focus:outline-none">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label data-i18n="formUrlLabel" class="block font-bold mb-1">URL-адрес:</label>
+                        <input type="text" id="new-url" placeholder="https://example-fake.kz" required class="w-full p-2.5 bg-white border-2 border-[#1E1E1E] focus:outline-none">
+                    </div>
+                    <div>
+                        <label data-i18n="formCategoryLabel" class="block font-bold mb-1">Категория:</label>
+                        <select id="new-category" class="w-full p-2.5 bg-white border-2 border-[#1E1E1E] focus:outline-none font-bold">
+                            <option value="Фишинг" data-i18n="optPhishing">Фишинг</option>
+                            <option value="Дипфейк" data-i18n="optDeepfake">Дипфейк</option>
+                            <option value="Фейк" data-i18n="optFake">Фейк</option>
+                            <option value="Официально" data-i18n="optOfficial">Ресми</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label data-i18n="formIsFakeLabel" class="block font-bold mb-1">Это фейк?</label>
+                        <select id="new-isfake" class="w-full p-2.5 bg-white border-2 border-[#1E1E1E] focus:outline-none font-bold">
+                            <option value="true" data-i18n="optIsFakeTrue">Да, это фейк / мошенники</option>
+                            <option value="false" data-i18n="optIsFakeFalse">Нет, это правда / официально</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label data-i18n="formDescLabel" class="block font-bold mb-1">Описание:</label>
+                        <input type="text" id="new-desc" data-i18n-ph="formDescPh" placeholder="В чем заключается суть..." required class="w-full p-2.5 bg-white border-2 border-[#1E1E1E] focus:outline-none">
+                    </div>
+                </div>
+                <button type="submit" id="t-submit-case-btn" class="brutal-btn w-full bg-[#FFE500] font-black text-xs sm:text-sm py-3 uppercase cursor-pointer">
+                    СОХРАНИТЬ КЕЙС В БАЗУ
+                </button>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
