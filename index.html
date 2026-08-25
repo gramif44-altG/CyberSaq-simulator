@@ -45,7 +45,7 @@
         <!-- Header / Шапка -->
         <header class="brutal-box bg-[#FFE500] p-4 sm:p-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <h1 class="font-black text-2xl sm:text-4xl uppercase tracking-tight flex items-center gap-2">
+                <h1 id="t-main-title" class="font-black text-2xl sm:text-4xl uppercase tracking-tight flex items-center gap-2">
                     🛡️ CYBERSAQ SIMULATOR
                 </h1>
                 <p id="t-subtitle" class="font-bold text-xs sm:text-sm mt-1">
@@ -113,9 +113,8 @@
                             </div>
                         </div>
 
-                        <!-- ШАГ 2: Визуальный медиа-симулятор (SMS / Пост / Форма) -->
+                        <!-- Визуальный медиа-симулятор -->
                         <div id="media-preview" class="border-2 border-[#1E1E1E] bg-[#F8F8F8] p-3 rounded-none font-mono text-xs">
-                            <!-- Динамически наполняется в app.js -->
                         </div>
                     </div>
                 </div>
@@ -143,11 +142,11 @@
                         ⚖️ Вынесите вердикт эксперта:
                     </span>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(false)" class="brutal-btn bg-[#FF6B6B] hover:bg-red-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
+                        <button onclick="checkAnswer(true)" class="brutal-btn bg-[#FF6B6B] hover:bg-red-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <span id="t-btn-fake">Это Фейк / Угроза</span>
                         </button>
-                        <button onclick="checkAnswer(true)" class="brutal-btn bg-[#6BCB77] hover:bg-green-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
+                        <button onclick="checkAnswer(false)" class="brutal-btn bg-[#6BCB77] hover:bg-green-400 text-white font-black text-sm py-3 uppercase cursor-pointer flex items-center justify-center gap-2">
                             <i class="fa-solid fa-circle-check"></i>
                             <span id="t-btn-real">Подлинный контент</span>
                         </button>
@@ -183,7 +182,7 @@
                     </div>
                 </div>
 
-                <!-- ШАГ 2: Полезные ссылки и Проверка еGov/Киберпол -->
+                <!-- Полезные ссылки и Проверка еGov/Киберпол -->
                 <div class="brutal-box bg-[#1E1E1E] text-white p-4 space-y-3 font-mono text-xs">
                     <p class="font-black text-yellow-400 uppercase text-xs flex items-center gap-1">
                         📢 Киберпол РК & eGov
