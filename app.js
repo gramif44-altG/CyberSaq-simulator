@@ -36,8 +36,6 @@ const i18n = {
         correctVerdictText: "Отличная работа!",
         wrongVerdictTitle: "❌ ОШИБКА В РАССЛЕДОВАНИИ (-100 XP)",
         wrongVerdictText: "Вы попались на уловку!",
-        seriesFinishedTitle: "🎉 СЕРИЯ ЗАВЕРШЕНА",
-        seriesFinishedText: "Все досье изучены! Включается ИИ-генерация бесконечных кейсов.",
         btnOk: "ОК",
 
         shopTitle: "🏪 МАГАЗИН ИНСТРУМЕНТОВ",
@@ -59,6 +57,29 @@ const i18n = {
                 <p class="text-[10px] text-gray-500 mt-2">Источник: Государственная служба реагирования на инциденты информационной безопасности РК (KZ-CERT).</p>
             </div>
         `,
+
+        whoisTitle: "🔍 WHOIS ЭКСПЕРТИЗА",
+        sslTitle: "🔒 SSL-СЕРТИФИКАТ",
+        whoisDomainLabel: "Доменное имя:",
+        whoisCreatedLabel: "Дата создания:",
+        whoisRiskLabel: "Уровень угрозы:",
+        sslIssuerLabel: "Центр сертификации:",
+        sslStatusLabel: "Статус:",
+
+        riskHigh: "ВЫСОКИЙ РИСК (98%)",
+        riskMedium: "СРЕДНИЙ РИСК (45%)",
+        riskSafe: "БЕЗОПАСНО (0%)",
+        sslInvalid: "❌ Недействительный издатель",
+        sslValid: "✅ Действителен",
+        sslGovValid: "✅ Подтверждено гос. органом",
+
+        smsSimTitle: "💬 SMS СИМУЛЯТОР",
+        aiVideoTitle: "📹 АНАЛИЗ ИИ-ВИДЕО",
+        officialVerifiedTitle: "🏛️ Официальный источник подтвержден",
+
+        createdDaysAgo: "дней назад",
+        createdYearsAgo: "лет назад",
+        createdJustNow: "Только что",
 
         chartCategories: ['Фишинг', 'Дипфейки', 'Фейки', 'Официально'],
         chartAccuracy: ['Верно', 'Ошибки'],
@@ -100,8 +121,6 @@ const i18n = {
         correctVerdictText: "Өте жақсы жұмыс!",
         wrongVerdictTitle: "❌ ТЕРГЕУДЕГІ ҚАТЕЛІК (-100 XP)",
         wrongVerdictText: "Сіз алаяқтардың арбауына түстіңіз!",
-        seriesFinishedTitle: "🎉 СЕРИЯ АЯҚТАЛДЫ",
-        seriesFinishedText: "Барлық досье зерттелді! Шексіз ЖИ-генерация іске қосылады.",
         btnOk: "ОК",
 
         shopTitle: "🏪 ҚҰРАЛДАР ДҮКЕНІ",
@@ -123,6 +142,29 @@ const i18n = {
                 <p class="text-[10px] text-gray-500 mt-2">Дереккөз: ҚР Ақпараттық қауіпсіздік оқиғаларына әрекет ету мемлекеттік қызметі (KZ-CERT).</p>
             </div>
         `,
+
+        whoisTitle: "🔍 WHOIS САРАПТАМАСЫ",
+        sslTitle: "🔒 SSL-СЕРТИФИКАТЫ",
+        whoisDomainLabel: "Домен аты:",
+        whoisCreatedLabel: "Жасалған күні:",
+        whoisRiskLabel: "Қауіп деңгейі:",
+        sslIssuerLabel: "Сертификаттау орталығы:",
+        sslStatusLabel: "Мәртебесі:",
+
+        riskHigh: "ЖОҒАРЫ ҚАУІП (98%)",
+        riskMedium: "ОРТАША ҚАУІП (45%)",
+        riskSafe: "ҚАУІПСІЗ (0%)",
+        sslInvalid: "❌ Жарамсыз эмитент",
+        sslValid: "✅ Жарамды",
+        sslGovValid: "✅ Мемлекеттік орган растаған",
+
+        smsSimTitle: "💬 SMS СИМУЛЯТОРЫ",
+        aiVideoTitle: "📹 ЖИ-БЕЙНЕ ТАЛДАУЫ",
+        officialVerifiedTitle: "🏛️ Ресми дереккөз расталды",
+
+        createdDaysAgo: "күн бұрын",
+        createdYearsAgo: "жыл бұрын",
+        createdJustNow: "Жаңа сәтте",
 
         chartCategories: ['Фишинг', 'Дипфейктер', 'Фейктер', 'Ресми'],
         chartAccuracy: ['Дұрыс', 'Қателіктер'],
@@ -164,8 +206,6 @@ const i18n = {
         correctVerdictText: "Great job!",
         wrongVerdictTitle: "❌ INVESTIGATION ERROR (-100 XP)",
         wrongVerdictText: "You fell for the trick!",
-        seriesFinishedTitle: "🎉 SERIES COMPLETED",
-        seriesFinishedText: "All initial dossiers examined! Infinite AI Case Generation enabled.",
         btnOk: "OK",
 
         shopTitle: "🏪 TOOL SHOP",
@@ -188,6 +228,29 @@ const i18n = {
             </div>
         `,
 
+        whoisTitle: "🔍 WHOIS EXAMINATION",
+        sslTitle: "🔒 SSL CERTIFICATE",
+        whoisDomainLabel: "Domain Name:",
+        whoisCreatedLabel: "Creation Date:",
+        whoisRiskLabel: "Threat Level:",
+        sslIssuerLabel: "Certificate Authority:",
+        sslStatusLabel: "Status:",
+
+        riskHigh: "HIGH RISK (98%)",
+        riskMedium: "MEDIUM RISK (45%)",
+        riskSafe: "SAFE (0%)",
+        sslInvalid: "❌ Invalid Issuer",
+        sslValid: "✅ Valid",
+        sslGovValid: "✅ Government Validated",
+
+        smsSimTitle: "💬 SMS SIMULATOR",
+        aiVideoTitle: "📹 AI VIDEO ANALYSIS",
+        officialVerifiedTitle: "🏛️ Official Source Verified",
+
+        createdDaysAgo: "days ago",
+        createdYearsAgo: "years ago",
+        createdJustNow: "Just now",
+
         chartCategories: ['Phishing', 'Deepfakes', 'Fakes', 'Official'],
         chartAccuracy: ['Correct', 'Errors'],
         chartAccuracyLabel: 'Your Answers'
@@ -204,7 +267,11 @@ const defaultCases = [
         mediaType: "sms",
         mediaPreview: {
             sender: "Kaspi-Bonus",
-            text: "Сізге 25 000 ₸ мерекелік бонусы есептелді! Бонусты картаға алу үшін сілтеме бойынша өтіңіз: check-verify.com/login"
+            text: {
+                ru: "Вам начислен праздничный бонус 25 000 ₸! Для перевода на карту перейдите по ссылке: check-verify.com/login",
+                kz: "Сізге 25 000 ₸ мерекелік бонусы есептелді! Бонусты картаға алу үшін сілтеме бойынша өтіңіз: check-verify.com/login",
+                en: "You have been credited a holiday bonus of 25,000 ₸! Transfer to your card via link: check-verify.com/login"
+            }
         },
         isFake: true,
         content: {
@@ -230,8 +297,8 @@ const defaultCases = [
                 lesson: "<strong>💡 Lesson:</strong> Real banks in RK never use third-party domains like `.com` or `.site` for bonus distributions."
             }
         },
-        whoisData: { domain: "check-verify.com", created: "2 дня назад", riskScore: "HIGH RISK (98%)" },
-        sslData: { issuer: "Free Let's Encrypt Authority", status: "❌ Invalid Issuer" }
+        whoisData: { domain: "check-verify.com", createdDays: 2, riskKey: "riskHigh" },
+        sslData: { issuer: "Free Let's Encrypt Authority", statusKey: "sslInvalid" }
     },
     {
         id: 2,
@@ -239,8 +306,11 @@ const defaultCases = [
         mediaIcon: "fa-robot",
         mediaType: "deepfake",
         mediaPreview: {
-            title: "📹 AI Video Analysis",
-            artifacts: ["⚠️ Размытый задний фон", "⚠️ Неестественные пальцы", "⚠️ Синхронизация губ нарушена"]
+            artifacts: {
+                ru: ["⚠️ Размытый задний фон", "⚠️ Неестественные пальцы", "⚠️ Синхронизация губ нарушена"],
+                kz: ["⚠️ Бұлыңғыр артқы фон", "⚠️ Табиғи емес саусақтар", "⚠️ Ерін синхронизациясы бұзылған"],
+                en: ["⚠️ Blurred background", "⚠️ Unnatural fingers", "⚠️ Lip sync issues"]
+            }
         },
         isFake: true,
         content: {
@@ -256,7 +326,7 @@ const defaultCases = [
                 title: "Талдықорғанда жасанды интеллекті бар робот-көше сыпырушылар іске қосылды",
                 description: "Әлеуметтік желілерде қала көшелерін тазалап жүрген жоғары технологиялық роботтардың видеосы тарауда.",
                 explanation: "Бұл нейрожелі жасаған фейк! Фондағы ғимараттардың бұрыштары бұлыңғыр, ал роботтың қозғалысы табиғи емес.",
-                lesson: "<strong>💡 Сабақ:</strong> АИ-дипфейкті тану үшін бөлшектерге мұқият қараңыз: саусақтардағы артефакттар және бұлыңғыр фондар."
+                lesson: "<strong>💡 Сабақ:</strong> ЖИ-дипфейкті тану үшін бөлшектерге мұқият қараңыз: саусақтардағы артефакттар және бұлыңғыр фондар."
             },
             en: {
                 category: "Deepfake",
@@ -266,18 +336,15 @@ const defaultCases = [
                 lesson: "<strong>💡 Lesson:</strong> To spot AI deepfakes, look closely at details: finger artifacts and blurred background elements."
             }
         },
-        whoisData: { domain: "taldykorgan-news.kz", created: "1 год назад", riskScore: "MEDIUM (45%)" },
-        sslData: { issuer: "Sectigo RSA", status: "✅ Valid SSL" }
+        whoisData: { domain: "taldykorgan-news.kz", createdYears: 1, riskKey: "riskMedium" },
+        sslData: { issuer: "Sectigo RSA", statusKey: "sslValid" }
     },
     {
         id: 3,
         url: "https://inform.kz/ru/kazahstanskie-shkolniki-zavoyovali-zoloto",
         mediaIcon: "fa-trophy",
         mediaType: "official",
-        mediaPreview: {
-            source: "Inform.kz",
-            status: "VERIFIED OFFICIAL NEWS AGENCY"
-        },
+        mediaPreview: { source: "Inform.kz" },
         isFake: false,
         content: {
             ru: {
@@ -302,16 +369,20 @@ const defaultCases = [
                 lesson: "<strong>💡 Lesson:</strong> Official news is always confirmed across major registered media outlets."
             }
         },
-        whoisData: { domain: "inform.kz", created: "18 лет назад", riskScore: "SAFE (0%)" },
-        sslData: { issuer: "DigiCert Global Root CA", status: "✅ Government Validated" }
+        whoisData: { domain: "inform.kz", createdYears: 18, riskKey: "riskSafe" },
+        sslData: { issuer: "DigiCert Global Root CA", statusKey: "sslGovValid" }
     }
 ];
 
 const aiTemplates = {
-    smsBrands: ["Kaspi Bank", "Halyk Bank", "Kazakhpost", "Kcell", "Egov.kz"],
+    smsBrands: ["Kaspi Bank", "Halyk Bank", "Kazpost", "Kcell", "Egov.kz"],
     fakeDomains: ["kaspi-promo.xyz", "halyk-payout.site", "post-kz.online", "egov-verify.net", "bonus-claim.biz"],
     amounts: ["15 000 ₸", "35 000 ₸", "50 000 ₸", "120 000 ₸"],
-    deepfakePersons: ["Президент РК", "Белгілі кәсіпкер", "Известный блогер", "Министр финансов"],
+    deepfakePersons: {
+        ru: ["Президент РК", "Известный инвестор", "Популярный блогер", "Министр финансов"],
+        kz: ["ҚР Президенті", "Белгілі инвестор", "Танымал блогер", "Қаржы министрі"],
+        en: ["President of RK", "Famous Investor", "Popular Blogger", "Minister of Finance"]
+    },
     newsSources: ["Inform.kz", "Tengrinews.kz", "Kazinform", "24.kz"]
 };
 
@@ -321,16 +392,30 @@ let userXP = 1000;
 let correctAnswers = 0;
 let wrongAnswers = 0;
 let threatsChart, accuracyChart;
+let usedAiCombinations = new Set(); // Чтобы избежать дублирования ИИ-кейсов
 
 function generateRandomAICase() {
-    const isFake = Math.random() < 0.65;
+    let brand, domain, amount, personIndex, typeIndex, isFake;
+    let comboKey = "";
+    let attempts = 0;
+
+    // Генерируем уникальную комбинацию
+    do {
+        isFake = Math.random() < 0.65;
+        typeIndex = Math.floor(Math.random() * 3); // 0: sms, 1: deepfake, 2: official
+        brand = aiTemplates.smsBrands[Math.floor(Math.random() * aiTemplates.smsBrands.length)];
+        domain = aiTemplates.fakeDomains[Math.floor(Math.random() * aiTemplates.fakeDomains.length)];
+        amount = aiTemplates.amounts[Math.floor(Math.random() * aiTemplates.amounts.length)];
+        personIndex = Math.floor(Math.random() * aiTemplates.deepfakePersons.ru.length);
+        
+        comboKey = `${typeIndex}-${brand}-${domain}-${amount}-${personIndex}-${isFake}`;
+        attempts++;
+    } while (usedAiCombinations.has(comboKey) && attempts < 50);
+
+    usedAiCombinations.add(comboKey);
+
     const types = ["sms", "deepfake", "official"];
-    const mediaType = types[Math.floor(Math.random() * types.length)];
-    
-    const brand = aiTemplates.smsBrands[Math.floor(Math.random() * aiTemplates.smsBrands.length)];
-    const domain = aiTemplates.fakeDomains[Math.floor(Math.random() * aiTemplates.fakeDomains.length)];
-    const amount = aiTemplates.amounts[Math.floor(Math.random() * aiTemplates.amounts.length)];
-    const person = aiTemplates.deepfakePersons[Math.floor(Math.random() * aiTemplates.deepfakePersons.length)];
+    const mediaType = types[typeIndex];
     const source = aiTemplates.newsSources[Math.floor(Math.random() * aiTemplates.newsSources.length)];
 
     let generatedCase = {
@@ -339,70 +424,93 @@ function generateRandomAICase() {
         mediaIcon: mediaType === "sms" ? "fa-comment-dots" : (mediaType === "deepfake" ? "fa-robot" : "fa-newspaper"),
         mediaType: mediaType,
         isFake: isFake,
-        whoisData: { domain: isFake ? domain : `${brand.toLowerCase().replace(/\s+/g, '')}.kz`, created: isFake ? "1 день назад" : "10 лет назад", riskScore: isFake ? "HIGH RISK (99%)" : "SAFE (0%)" },
-        sslData: { issuer: isFake ? "Unknown CA" : "DigiCert Global", status: isFake ? "❌ Invalid" : "✅ Valid" }
+        whoisData: { 
+            domain: isFake ? domain : `${brand.toLowerCase().replace(/\s+/g, '')}.kz`, 
+            createdDays: isFake ? 1 : null, 
+            createdYears: isFake ? null : 10,
+            riskKey: isFake ? "riskHigh" : "riskSafe" 
+        },
+        sslData: { 
+            issuer: isFake ? "Unknown CA" : "DigiCert Global", 
+            statusKey: isFake ? "sslInvalid" : "sslValid" 
+        }
     };
 
     if (mediaType === "sms") {
         generatedCase.mediaPreview = {
             sender: isFake ? `SMS-INFO (${brand.toUpperCase()})` : brand,
-            text: isFake 
-                ? `Сіздің аккаунтыңызға ${amount} компенсация түсті! Белсендіру үшін: http://${domain}/login`
-                : `Сіздің шотыңыздан операция сәтті өтті. Анықтама үшін: ${brand.toLowerCase().replace(/\s+/g, '')}.kz`
+            text: {
+                ru: isFake 
+                    ? `Вам начислена компенсация (${amount})! Для активации пройдите: http://${domain}/login`
+                    : `Операция по карте выполнена успешно. Справки по адресу: ${brand.toLowerCase().replace(/\s+/g, '')}.kz`,
+                kz: isFake 
+                    ? `Сіздің аккаунтыңызға ${amount} компенсация түсті! Белсендіру үшін: http://${domain}/login`
+                    : `Сіздің шотыңыздан операция сәтті өтті. Анықтама үшін: ${brand.toLowerCase().replace(/\s+/g, '')}.kz`,
+                en: isFake 
+                    ? `Compensation of ${amount} has been credited! Activate at: http://${domain}/login`
+                    : `Transaction completed successfully. Info: ${brand.toLowerCase().replace(/\s+/g, '')}.kz`
+            }
         };
         generatedCase.content = {
             ru: {
                 category: isFake ? "Фишинг" : "Официально",
                 title: `Уведомление от имени ${brand}`,
                 description: `Вам пришло сообщение о зачислении средств (${amount}). Требуется переход по ссылке.`,
-                explanation: isFake ? "Это фишинг! Домен не принадлежит официальному банку." : "Это официальное сообщение.",
+                explanation: isFake ? "Это фишинг! Домен не принадлежит официальному банку." : "Это официальное сообщение банка.",
                 lesson: "<strong>💡 Урок:</strong> Всегда проверяйте доменное имя в ссылках SMS."
             },
             kz: {
                 category: isFake ? "Фишинг" : "Ресми",
                 title: `${brand} атынан хабарлама`,
                 description: `Сізге қаражат түскені туралы хабарлама келді (${amount}). Сілтеме бойынша өту талап етіледі.`,
-                explanation: isFake ? "Бұл фишинг! Домен ресми банкке тиесілі емес." : "Бұл ресми хабарлама.",
+                explanation: isFake ? "Бұл фишинг! Домен ресми банкке тиесілі емес." : "Бұл банктің ресми хабарламасы.",
                 lesson: "<strong>💡 Сабақ:</strong> SMS-тегі сілтемелердің домендік атын әрдайым тексеріңіз."
             },
             en: {
                 category: isFake ? "Phishing" : "Official",
                 title: `Notification from ${brand}`,
                 description: `You received a message regarding funds deposit (${amount}). Link transition required.`,
-                explanation: isFake ? "This is phishing! The domain does not belong to the bank." : "This is an official message.",
+                explanation: isFake ? "This is phishing! The domain does not belong to the bank." : "This is an official bank message.",
                 lesson: "<strong>💡 Lesson:</strong> Always verify domain names in SMS links."
             }
         };
     } else if (mediaType === "deepfake") {
+        const pRu = aiTemplates.deepfakePersons.ru[personIndex];
+        const pKz = aiTemplates.deepfakePersons.kz[personIndex];
+        const pEn = aiTemplates.deepfakePersons.en[personIndex];
+
         generatedCase.mediaPreview = {
-            title: "📹 AI Video Analysis",
-            artifacts: isFake ? ["⚠️ Синхронизация губ нарушена", "⚠️ ИИ-синтез голоса", "⚠️ Артефакты лица"] : ["✅ Реальная мимика", "✅ Высокое качество"]
+            artifacts: {
+                ru: isFake ? ["⚠️ Синхронизация губ нарушена", "⚠️ ИИ-синтез голоса", "⚠️ Артефакты лица"] : ["✅ Реальная мимика", "✅ Высокое качество"],
+                kz: isFake ? ["⚠️ Ерін синхронизациясы бұзылған", "⚠️ ЖИ-дауыс синтезі", "⚠️ Беттегі артефакттар"] : ["✅ Табиғи мимика", "✅ Жоғары сапа"],
+                en: isFake ? ["⚠️ Lip sync issue", "⚠️ AI voice synthesis", "⚠️ Facial artifacts"] : ["✅ Natural facial movements", "✅ High quality"]
+            }
         };
         generatedCase.content = {
             ru: {
                 category: isFake ? "Дипфейк" : "Официально",
-                title: `Видеообращение: ${person}`,
-                description: isFake ? `В соцсетях распространяется видео, где ${person} предлагает гарантированный доход ${amount}.` : `Официальное интервью на государственном канале.`,
+                title: `Видеообращение: ${pRu}`,
+                description: isFake ? `В соцсетях распространяется видео, где ${pRu} предлагает гарантированный доход ${amount}.` : `Официальное интервью на государственном канале.`,
                 explanation: isFake ? "Видео сгенерировано нейросетью (дипфейк)." : "Настоящая видеозапись.",
                 lesson: "<strong>💡 Урок:</strong> Обращайте внимание на мимику и неестественный голос."
             },
             kz: {
                 category: isFake ? "Дипфейк" : "Ресми",
-                title: `Бейнежолдау: ${person}`,
-                description: isFake ? `Әлеуметтік желіде ${person} ${amount} кепілдендірілген табыс ұсынатын видео таралуда.` : `Мемлекеттік арнадағы ресми сұхбат.`,
+                title: `Бейнежолдау: ${pKz}`,
+                description: isFake ? `Әлеуметтік желіде ${pKz} ${amount} кепілдендірілген табыс ұсынатын видео таралуда.` : `Мемлекеттік арнадағы ресми сұхбат.`,
                 explanation: isFake ? "Бейне нейрожелі арқылы жасалған (дипфейк)." : "Нағыз бейнежазба.",
                 lesson: "<strong>💡 Сабақ:</strong> Бет мимикасы мен табиғи емес дауысқа назар аударыңыз."
             },
             en: {
                 category: isFake ? "Deepfake" : "Official",
-                title: `Video Address: ${person}`,
-                description: isFake ? `A video is circulating where ${person} promises guaranteed returns of ${amount}.` : `Official interview on public channel.`,
+                title: `Video Address: ${pEn}`,
+                description: isFake ? `A video is circulating where ${pEn} promises guaranteed returns of ${amount}.` : `Official interview on public channel.`,
                 explanation: isFake ? "Video generated by AI (deepfake)." : "Authentic video recording.",
                 lesson: "<strong>💡 Lesson:</strong> Pay attention to facial movement artifacts and voice synthesis."
             }
         };
     } else {
-        generatedCase.mediaPreview = null;
+        generatedCase.mediaPreview = { source: source };
         generatedCase.content = {
             ru: {
                 category: isFake ? "Фейк" : "Официально",
@@ -451,7 +559,7 @@ function changeLanguage(lang) {
     if (document.getElementById("t-score-label")) document.getElementById("t-score-label").innerText = t.scoreLabel;
     if (document.getElementById("t-tools-label")) document.getElementById("t-tools-label").innerText = t.toolsLabel;
     if (document.getElementById("t-verdict-label")) document.getElementById("t-verdict-label").innerText = t.verdictLabel;
-    if (document.getElementById("t-btn-fake")) document.getElementById("t-btn-[#FFE500]") ? document.getElementById("t-btn-fake").innerText = t.btnFake : document.getElementById("t-btn-fake").innerText = t.btnFake;
+    if (document.getElementById("t-btn-fake")) document.getElementById("t-btn-fake").innerText = t.btnFake;
     if (document.getElementById("t-btn-real")) document.getElementById("t-btn-real").innerText = t.btnReal;
     if (document.getElementById("t-add-title")) document.getElementById("t-add-title").innerText = t.addTitle;
     if (document.getElementById("t-threats-title")) document.getElementById("t-threats-title").innerText = t.threatsTitle;
@@ -495,26 +603,33 @@ function loadCase(index) {
 
     const mediaContainer = document.getElementById("media-preview");
     if (caseData.mediaType === "sms" && caseData.mediaPreview) {
+        const smsText = typeof caseData.mediaPreview.text === "object" 
+            ? caseData.mediaPreview.text[currentLang] || caseData.mediaPreview.text['ru']
+            : caseData.mediaPreview.text;
+
         mediaContainer.innerHTML = `
             <div class="bg-white p-3 border border-gray-300 shadow-inner">
-                <p class="text-[10px] text-gray-500 font-bold uppercase mb-1">💬 SMS SIMULATOR (${caseData.mediaPreview.sender})</p>
-                <p class="text-xs bg-emerald-50 p-2 border-l-4 border-emerald-500 font-sans">${caseData.mediaPreview.text}</p>
+                <p class="text-[10px] text-gray-500 font-bold uppercase mb-1">${t.smsSimTitle} (${caseData.mediaPreview.sender})</p>
+                <p class="text-xs bg-emerald-50 p-2 border-l-4 border-emerald-500 font-sans">${smsText}</p>
             </div>
         `;
     } else if (caseData.mediaType === "deepfake" && caseData.mediaPreview) {
+        const artifactsList = caseData.mediaPreview.artifacts[currentLang] || caseData.mediaPreview.artifacts['ru'];
+
         mediaContainer.innerHTML = `
             <div class="bg-black text-green-400 p-3 border border-gray-800 font-mono">
-                <p class="text-xs font-bold text-yellow-400 mb-1">${caseData.mediaPreview.title}</p>
+                <p class="text-xs font-bold text-yellow-400 mb-1">${t.aiVideoTitle}</p>
                 <div class="space-y-1">
-                    ${caseData.mediaPreview.artifacts.map(a => `<p class="text-[11px]">${a}</p>`).join('')}
+                    ${artifactsList.map(a => `<p class="text-[11px]">${a}</p>`).join('')}
                 </div>
             </div>
         `;
     } else {
+        const sourceName = caseData.mediaPreview ? caseData.mediaPreview.source : "Inform.kz";
         mediaContainer.innerHTML = `
             <div class="bg-blue-50 p-2.5 border border-blue-200 text-blue-900 font-mono text-[11px] flex items-center justify-between">
-                <span>🏛️ Official Source Verified</span>
-                <span class="font-bold">Inform.kz</span>
+                <span>${t.officialVerifiedTitle}</span>
+                <span class="font-bold">${sourceName}</span>
             </div>
         `;
     }
@@ -583,13 +698,11 @@ function openThreatsReport() {
     showModal(t.certReportTitle, t.certReportBody);
 }
 
-// ИСПРАВЛЕНА ОШИБКА: Проверка ответа (userIsFake: true если пользователь считает что это фейк, false если подлинный)
 function checkAnswer(userIsFake) {
     const currentCase = cases[currentCaseIndex];
     const langContent = currentCase.content[currentLang] || currentCase.content['ru'];
     const t = i18n[currentLang];
     
-    // Ответ верен, если мнение пользователя совпадает с флагом isFake у кейса
     const isCorrect = (userIsFake === currentCase.isFake);
 
     const lessonHTML = langContent.lesson ? `
@@ -625,24 +738,36 @@ function checkAnswer(userIsFake) {
 }
 
 function inspectDomain() {
+    const t = i18n[currentLang];
     const caseData = cases[currentCaseIndex];
-    const data = caseData.whoisData || { domain: "domain.kz", created: "Н/Д", riskScore: "UNKNOWN" };
-    showModal("🔍 WHOIS EXAM", `
+    const data = caseData.whoisData || { domain: "domain.kz", createdDays: 1, riskKey: "riskHigh" };
+
+    let createdText = t.createdJustNow;
+    if (data.createdDays) createdText = `${data.createdDays} ${t.createdDaysAgo}`;
+    if (data.createdYears) createdText = `${data.createdYears} ${t.createdYearsAgo}`;
+
+    const riskText = t[data.riskKey] || data.riskKey;
+
+    showModal(t.whoisTitle, `
         <div class="font-mono text-xs space-y-2">
-            <p><strong>Domain Name:</strong> ${data.domain}</p>
-            <p><strong>Creation Date:</strong> ${data.created}</p>
-            <p><strong>Threat Level:</strong> <span class="font-bold text-red-600">${data.riskScore}</span></p>
+            <p><strong>${t.whoisDomainLabel}</strong> ${data.domain}</p>
+            <p><strong>${t.whoisCreatedLabel}</strong> ${createdText}</p>
+            <p><strong>${t.whoisRiskLabel}</strong> <span class="font-bold text-red-600">${riskText}</span></p>
         </div>
     `);
 }
 
 function inspectSSL() {
+    const t = i18n[currentLang];
     const caseData = cases[currentCaseIndex];
-    const data = caseData.sslData || { issuer: "Standard CA", status: "✅ Active" };
-    showModal("🔒 SSL CERTIFICATE", `
+    const data = caseData.sslData || { issuer: "Standard CA", statusKey: "sslValid" };
+
+    const statusText = t[data.statusKey] || data.statusKey;
+
+    showModal(t.sslTitle, `
         <div class="font-mono text-xs space-y-2">
-            <p><strong>Certificate Authority:</strong> ${data.issuer}</p>
-            <p><strong>Status:</strong> ${data.status}</p>
+            <p><strong>${t.sslIssuerLabel}</strong> ${data.issuer}</p>
+            <p><strong>${t.sslStatusLabel}</strong> ${statusText}</p>
         </div>
     `);
 }
@@ -698,7 +823,8 @@ function buyWhoisScanner() {
         document.getElementById("user-score").innerText = `${userXP} XP`;
         saveProgress();
         const caseData = cases[currentCaseIndex];
-        showModal(t.shopItemTitle, `<p class="font-mono text-xs"><strong>WHOIS Hint:</strong> ${caseData.whoisData ? caseData.whoisData.riskScore : 'Safe'}</p>`);
+        const riskText = t[caseData.whoisData ? caseData.whoisData.riskKey : 'riskSafe'] || "SAFE";
+        showModal(t.shopItemTitle, `<p class="font-mono text-xs"><strong>WHOIS Hint:</strong> ${riskText}</p>`);
     } else {
         showModal(t.shopTitle, `<p class="text-red-600 font-bold text-xs">${t.noXpText}</p>`);
     }
@@ -719,15 +845,15 @@ function addNewCase(event) {
         url: url,
         mediaIcon: isFake ? "fa-triangle-exclamation" : "fa-circle-check",
         mediaType: "official",
-        mediaPreview: null,
+        mediaPreview: { source: "User Submission" },
         isFake: isFake,
         content: {
             ru: { category: category, title: title, description: desc, explanation: "Пользовательский кейс.", lesson: "" },
             kz: { category: category, title: title, description: desc, explanation: "Пайдаланушы кейсі.", lesson: "" },
             en: { category: category, title: title, description: desc, explanation: "User submitted case.", lesson: "" }
         },
-        whoisData: { domain: url.replace("https://", "").replace("http://", "").split("/")[0], created: "Только что", riskScore: isFake ? "HIGH" : "LOW" },
-        sslData: { issuer: "Custom SSL", status: "✅ Verified" }
+        whoisData: { domain: url.replace("https://", "").replace("http://", "").split("/")[0], createdDays: 1, riskKey: isFake ? "riskHigh" : "riskSafe" },
+        sslData: { issuer: "Custom SSL", statusKey: isFake ? "sslInvalid" : "sslValid" }
     };
 
     cases.push(customCase);
