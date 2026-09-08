@@ -583,12 +583,14 @@ function openThreatsReport() {
     showModal(t.certReportTitle, t.certReportBody);
 }
 
+// --- ИСПРАВЛЕННАЯ ФУНКЦИЯ ПРОВЕРКИ ---
 function checkAnswer(userChoice) {
     const currentCase = cases[currentCaseIndex];
     const langContent = currentCase.content[currentLang] || currentCase.content['ru'];
     const t = i18n[currentLang];
     
-    const isCorrect = (userChoice === !currentCase.isFake);
+    // Прямое сравнение: вы нажали "Фейк" (true), и кейс действительно является "Фейком" (isFake: true)
+    const isCorrect = (userChoice === currentCase.isFake);
 
     const lessonHTML = langContent.lesson ? `
         <div class="mt-3 p-3 bg-[#FFE500]/30 border-2 border-[#1E1E1E] text-xs font-mono leading-relaxed">
@@ -622,7 +624,6 @@ function checkAnswer(userChoice) {
     loadCase(currentCaseIndex);
 }
 
-// --- Исправление вызовов кнопок WHOIS и SSL ---
 function inspectDomain() {
     const caseData = cases[currentCaseIndex];
     const data = caseData.whoisData || { domain: "domain.kz", created: "Н/Д", riskScore: "UNKNOWN" };
@@ -703,7 +704,6 @@ function buyWhoisScanner() {
     }
 }
 
-// --- Исправление привязки полей Конструктора кейсов ---
 function addNewCase(event) {
     if (event) event.preventDefault();
     const t = i18n[currentLang];
