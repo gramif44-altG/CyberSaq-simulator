@@ -28,7 +28,7 @@
         .top-bar {
             display: flex;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -44,10 +44,11 @@
         .lang-btn {
             border: none;
             background: transparent;
-            padding: 6px 12px;
+            padding: 6px 14px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
+            font-family: inherit;
         }
 
         .lang-btn.active {
@@ -79,21 +80,27 @@
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
+            font-family: inherit;
         }
 
+        /* Исправленная сетка на весь экран */
         .dashboard-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 20px;
-            max-width: 450px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .card {
             background: var(--card-bg);
             border: 3px solid var(--border-color);
             box-shadow: 4px 4px 0 var(--border-color);
-            padding: 15px;
-            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card-header {
@@ -123,16 +130,17 @@
 
         .card.dark .card-title {
             color: var(--primary-yellow);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-transform: uppercase;
         }
 
         .card.dark p {
-            font-size: 12px;
+            font-size: 13px;
             color: #ccc;
             line-height: 1.4;
             margin-bottom: 15px;
@@ -142,13 +150,14 @@
             display: block;
             width: 100%;
             background: transparent;
-            border: 1px solid #555;
+            border: 2px solid #555;
             color: #fff;
             padding: 10px;
             text-align: center;
             text-decoration: none;
             font-size: 12px;
-            margin-bottom: 8px;
+            font-weight: bold;
+            margin-bottom: 10px;
             box-sizing: border-box;
             transition: 0.2s;
         }
@@ -161,34 +170,36 @@
         .chart-container {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 220px;
         }
 
         /* ИИ-Кейсы */
         .case-box {
             background: #fff;
             border: 2px dashed var(--border-color);
-            padding: 10px;
-            font-size: 13px;
-            margin-bottom: 10px;
-            min-height: 60px;
+            padding: 15px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 70px;
+            line-height: 1.4;
         }
 
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 10px;
         }
 
         .opt-btn {
             background: #fff;
             border: 2px solid var(--border-color);
-            padding: 8px;
+            padding: 10px;
             font-weight: bold;
-            font-size: 11px;
+            font-size: 12px;
             cursor: pointer;
             box-shadow: 2px 2px 0 var(--border-color);
+            font-family: inherit;
         }
 
         .opt-btn:hover {
@@ -196,9 +207,9 @@
         }
 
         .feedback {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
-            margin-top: 5px;
+            min-height: 20px;
         }
     </style>
 </head>
@@ -207,37 +218,41 @@
     <div class="top-bar">
         <div class="lang-switch">
             <button class="lang-btn" onclick="setLanguage('kz', this)">KZ</button>
-            <button class="lang-btn" onclick="setLanguage('ru', this)">RU</button>
-            <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+            <button class="lang-btn active" onclick="setLanguage('ru', this)">RU</button>
+            <button class="lang-btn" onclick="setLanguage('en', this)">EN</button>
         </div>
         <div class="stat-badge">
-            <span data-i18n="rating">RATING:</span> 
+            <span data-i18n="rating">РЕЙТИНГ:</span> 
             <span class="highlight" id="xpDisplay">3950 XP</span>
         </div>
-        <button class="shop-btn" data-i18n="shop">🛒 SHOP</button>
+        <button class="shop-btn" data-i18n="shop">🛒 МАГАЗИН</button>
     </div>
 
     <div class="dashboard-grid">
         
-        <!-- Карточка: Бесконечные ИИ-кейсы -->
+        <!-- Карточка 1: Бесконечные ИИ-кейсы -->
         <div class="card">
-            <div class="card-header">
-                <span>🤖 <span data-i18n="ai_case_title">AI SIMULATOR CASES</span></span>
+            <div>
+                <div class="card-header">
+                    <span>🤖 <span data-i18n="ai_case_title">AI СИМУЛЯТОР КЕЙСОВ</span></span>
+                </div>
+                <div class="case-box" id="caseText">Загрузка кейса...</div>
             </div>
-            <div class="case-box" id="caseText">Loading...</div>
-            <div class="options-grid">
-                <button class="opt-btn" onclick="checkAnswer('phishing')" data-i18n="chart_phishing">Phishing</button>
-                <button class="opt-btn" onclick="checkAnswer('deepfake')" data-i18n="chart_deepfake">Deepfake</button>
-                <button class="opt-btn" onclick="checkAnswer('fake')" data-i18n="chart_fake">Fake</button>
-                <button class="opt-btn" onclick="checkAnswer('official')" data-i18n="chart_official">Official</button>
+            <div>
+                <div class="options-grid">
+                    <button class="opt-btn" onclick="checkAnswer('phishing')" data-i18n="chart_phishing">Фишинг</button>
+                    <button class="opt-btn" onclick="checkAnswer('deepfake')" data-i18n="chart_deepfake">Дипфейк</button>
+                    <button class="opt-btn" onclick="checkAnswer('fake')" data-i18n="chart_fake">Фейк</button>
+                    <button class="opt-btn" onclick="checkAnswer('official')" data-i18n="chart_official">Официально</button>
+                </div>
+                <div class="feedback" id="feedbackText"></div>
             </div>
-            <div class="feedback" id="feedbackText"></div>
         </div>
 
-        <!-- Карточка 1: Карта киберугроз -->
+        <!-- Карточка 2: Карта киберугроз -->
         <div class="card">
             <div class="card-header">
-                <span>📊 <span data-i18n="threats_title">KZ CYBER THREAT MAP</span></span>
+                <span>📊 <span data-i18n="threats_title">КАРТА КИБЕРУГРОЗ РК</span></span>
                 <a href="https://cert.gov.kz" target="_blank" class="external-link">KZ-CERT ↗</a>
             </div>
             <div class="chart-container">
@@ -245,30 +260,34 @@
             </div>
         </div>
 
-        <!-- Карточка 2: Точность анализа -->
+        <!-- Карточка 3: Точность анализа -->
         <div class="card">
             <div class="card-header">
-                <span>🎯 <span data-i18n="accuracy_title">YOUR ANALYSIS ACCURACY</span></span>
+                <span>🎯 <span data-i18n="accuracy_title">ВАША ТОЧНОСТЬ АНАЛИЗА</span></span>
             </div>
             <div class="chart-container">
                 <canvas id="accuracyChart"></canvas>
             </div>
         </div>
 
-        <!-- Карточка 3: Киберпол и EGOV -->
+        <!-- Карточка 4: Киберпол и EGOV -->
         <div class="card dark">
-            <div class="card-title">
-                📢 <span data-i18n="cyberpol_title">CYBERPOL KZ & EGOV</span>
+            <div>
+                <div class="card-title">
+                    📢 <span data-i18n="cyberpol_title">КИБЕРПОЛ РК & EGOV</span>
+                </div>
+                <p data-i18n="cyberpol_desc">
+                    Подозрительный сайт или сообщение? Проверьте ресурсы через официальные базы данных:
+                </p>
             </div>
-            <p data-i18n="cyberpol_desc">
-                Suspicious website or message? Verify resources through official databases:
-            </p>
-            <a href="https://cert.gov.kz" target="_blank" class="cyber-btn">
-                🛡️ <span data-i18n="btn_cert">KZ-CERT Computer Security Service</span>
-            </a>
-            <a href="https://egov.kz" target="_blank" class="cyber-btn">
-                🏛️ <span data-i18n="btn_egov">eGov.kz Official Portal</span>
-            </a>
+            <div>
+                <a href="https://cert.gov.kz" target="_blank" class="cyber-btn">
+                    🛡️ <span data-i18n="btn_cert">KZ-CERT Служба компьютерной безопасности</span>
+                </a>
+                <a href="https://egov.kz" target="_blank" class="cyber-btn">
+                    🏛️ <span data-i18n="btn_egov">eGov.kz Официальный портал</span>
+                </a>
+            </div>
         </div>
 
     </div>
@@ -369,12 +388,12 @@
             }
         ];
 
-        let currentLang = 'en';
+        let currentLang = 'ru';
         let threatsChart, accuracyChart;
         let currentCase = null;
-        let userXP = 5600;
-        let correctCount = 53;
-        let errorCount = 28;
+        let userXP = 3950;
+        let correctCount = 37;
+        let errorCount = 22;
 
         function generateCase() {
             const randomIndex = Math.floor(Math.random() * aiCases.length);
@@ -394,7 +413,7 @@
                 correctCount++;
                 document.getElementById('xpDisplay').textContent = userXP + ' XP';
                 updateAccuracyChart();
-                setTimeout(generateCase, 1500);
+                setTimeout(generateCase, 1200);
             } else {
                 feedback.style.color = '#ff6b6b';
                 feedback.textContent = translations[currentLang].wrong_msg;
@@ -498,7 +517,7 @@
         window.onload = () => {
             initCharts();
             generateCase();
-            setLanguage('en', document.querySelectorAll('.lang-btn')[2]);
+            setLanguage('ru', document.querySelectorAll('.lang-btn')[1]);
         };
     </script>
 </body>
