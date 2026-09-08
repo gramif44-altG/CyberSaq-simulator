@@ -451,7 +451,7 @@ function changeLanguage(lang) {
     if (document.getElementById("t-score-label")) document.getElementById("t-score-label").innerText = t.scoreLabel;
     if (document.getElementById("t-tools-label")) document.getElementById("t-tools-label").innerText = t.toolsLabel;
     if (document.getElementById("t-verdict-label")) document.getElementById("t-verdict-label").innerText = t.verdictLabel;
-    if (document.getElementById("t-btn-fake")) document.getElementById("t-btn-fake").innerText = t.btnFake;
+    if (document.getElementById("t-btn-fake")) document.getElementById("t-btn-[#FFE500]") ? document.getElementById("t-btn-fake").innerText = t.btnFake : document.getElementById("t-btn-fake").innerText = t.btnFake;
     if (document.getElementById("t-btn-real")) document.getElementById("t-btn-real").innerText = t.btnReal;
     if (document.getElementById("t-add-title")) document.getElementById("t-add-title").innerText = t.addTitle;
     if (document.getElementById("t-threats-title")) document.getElementById("t-threats-title").innerText = t.threatsTitle;
@@ -583,14 +583,14 @@ function openThreatsReport() {
     showModal(t.certReportTitle, t.certReportBody);
 }
 
-// --- ИСПРАВЛЕННАЯ ФУНКЦИЯ ПРОВЕРКИ ---
-function checkAnswer(userChoice) {
+// ИСПРАВЛЕНА ОШИБКА: Проверка ответа (userIsFake: true если пользователь считает что это фейк, false если подлинный)
+function checkAnswer(userIsFake) {
     const currentCase = cases[currentCaseIndex];
     const langContent = currentCase.content[currentLang] || currentCase.content['ru'];
     const t = i18n[currentLang];
     
-    // Прямое сравнение: вы нажали "Фейк" (true), и кейс действительно является "Фейком" (isFake: true)
-    const isCorrect = (userChoice === currentCase.isFake);
+    // Ответ верен, если мнение пользователя совпадает с флагом isFake у кейса
+    const isCorrect = (userIsFake === currentCase.isFake);
 
     const lessonHTML = langContent.lesson ? `
         <div class="mt-3 p-3 bg-[#FFE500]/30 border-2 border-[#1E1E1E] text-xs font-mono leading-relaxed">
@@ -661,7 +661,7 @@ function showModal(title, bodyHtml) {
         <div class="bg-white border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E] max-w-md w-full p-6 relative">
             <h3 class="font-black text-lg text-[#1E1E1E] uppercase mb-3 border-b-2 border-[#1E1E1E] pb-2">${title}</h3>
             <div class="mb-6">${bodyHtml}</div>
-            <button onclick="closeModal()" class="w-full bg-[#FFE500] hover:bg-yellow-400 text-[#1E1E1E] font-black py-2 border-2 border-[#1E1E1E] shadow-[3px_3px_0px_0px_#1E1E1E] uppercase tracking-wider text-xs active:translate-x-0.5 active:translate-y-0.5 transition-all">
+            <button onclick="closeModal()" class="w-full bg-[#FFE500] hover:bg-yellow-400 text-[#1E1E1E] font-black py-2 border-2 border-[#1E1E1E] shadow-[3px_3px_0px_0px_#1E1E1E] uppercase tracking-wider text-xs active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer">
                 ${t.btnOk}
             </button>
         </div>
