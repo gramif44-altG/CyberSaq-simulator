@@ -15,11 +15,10 @@ const i18n = {
         sslBtn: "SSL-сертификат",
         dossierPrefix: "ДОСЬЕ",
         
-        // Блок eGov / Cyberpol
-        egovTitle: "📢 Киберпол РК & eGov",
-        egovDesc: "Подозрительный сайт или сообщение? Проверьте ресурс через официальные базы:",
-        certLink: "🛡️ Компьютерная служба KZ-CERT",
-        egovLink: "🏛️ Официальный портал eGov.kz",
+        cyberpolTitle: "📢 Киберпол РК & eGov",
+        cyberpolDesc: "Подозрительный сайт или сообщение? Проверьте ресурс через официальные базы:",
+        certBtn: "🛡️ Компьютерная служба KZ-CERT",
+        egovBtn: "🏛️ Официальный портал eGov.kz",
 
         formTitleLabel: "Заголовок / Новость:",
         formTitlePh: "Например: Выплаты всем гражданам 50 000 ₸",
@@ -106,11 +105,10 @@ const i18n = {
         sslBtn: "SSL-сертификат талдауы",
         dossierPrefix: "ДОСЬЕ",
 
-        // Блок eGov / Cyberpol
-        egovTitle: "📢 Киберпол ҚР & eGov",
-        egovDesc: "Күдікті сайт немесе хабарлама ма? Ресурсты ресми базалар арқылы тексеріңіз:",
-        certLink: "🛡️ KZ-CERT Компьютерлік қауіпсіздік қызметі",
-        egovLink: "🏛️ eGov.kz Ресми порталы",
+        cyberpolTitle: "📢 ҚР Киберполы & eGov",
+        cyberpolDesc: "Күмәнді сайт немесе хабарлама ма? Ресурсты ресми базалар арқылы тексеріңіз:",
+        certBtn: "🛡️ KZ-CERT Компьютерлік қызметі",
+        egovBtn: "🏛️ eGov.kz ресми порталы",
 
         formTitleLabel: "Тақырып / Жаңалық:",
         formTitlePh: "Мысалы: Барлық азаматтарға 50 000 ₸ төлем",
@@ -197,11 +195,10 @@ const i18n = {
         sslBtn: "SSL Analysis",
         dossierPrefix: "DOSSIER",
 
-        // Блок eGov / Cyberpol
-        egovTitle: "📢 Cyberpol RK & eGov",
-        egovDesc: "Suspicious site or message? Verify the resource via official databases:",
-        certLink: "🛡️ KZ-CERT Emergency Response Service",
-        egovLink: "🏛️ eGov.kz Official Portal",
+        cyberpolTitle: "📢 Cyberpol RK & eGov",
+        cyberpolDesc: "Suspicious website or message? Verify resource via official registries:",
+        certBtn: "🛡️ KZ-CERT Incident Response",
+        egovBtn: "🏛️ Official Portal eGov.kz",
 
         formTitleLabel: "Title / News:",
         formTitlePh: "Example: 50,000 ₸ payout to all citizens",
@@ -392,16 +389,60 @@ const defaultCases = [
     }
 ];
 
-// Разнообразные оригинальные шаблоны для генерации кейсов
+// --- ГЕНЕРАТОР ШЕКСІЗ ЖӘНЕ ҚЫЗЫҚТЫ КЕЙСТЕР БАЗАСЫ ---
 const aiTemplates = {
-    smsBrands: ["Kaspi Bank", "Halyk Bank", "Kazpost", "Kcell", "Egov.kz", "Enbek.kz"],
-    fakeDomains: ["kaspi-promo.xyz", "halyk-payout.site", "post-kz.online", "egov-verify.net", "bonus-claim.biz", "social-payout.com.kz"],
-    amounts: ["15 000 ₸", "35 000 ₸", "50 000 ₸", "85 000 ₸", "120 000 ₸"],
-    deepfakePersons: {
-        ru: ["Президент РК", "Известный инвестор", "Популярный блогер", "Министр финансов", "Технологический эксперт"],
-        kz: ["ҚР Президенті", "Белгілі инвестор", "Танымал блогер", "Қаржы министрі", "Технологиялық сарапшы"],
-        en: ["President of RK", "Famous Investor", "Popular Blogger", "Minister of Finance", "Tech Expert"]
-    },
+    brands: [
+        { name: "Kaspi Bank", domain: "kaspi.kz" },
+        { name: "Halyk Bank", domain: "halykbank.kz" },
+        { name: "eGov.kz", domain: "egov.kz" },
+        { name: "Enbek.kz", domain: "enbek.kz" },
+        { name: "Kazpost", domain: "post.kz" }
+    ],
+    fakeDomains: [
+        "kaspi-payout-bonus.com", "halyk-claim-reward.net", "egov-subsidy-2026.org",
+        "enbek-kazakhstan-gov.site", "post-track-verify.online", "national-bonus-fund.biz",
+        "invest-freedom-finance.tech", "crypto-kazakh-earn.top"
+    ],
+    payoutReasons: [
+        {
+            ru: "государственной компенсации за инфляцию",
+            kz: "инфляцияға байланысты мемлекеттік өтемақы",
+            en: "state inflation compensation"
+        },
+        {
+            ru: "новогоднего бонуса постоянным клиентам",
+            kz: "тұрақты клиенттерге арналған мерекелік бонус",
+            en: "holiday loyalty bonus"
+        },
+        {
+            ru: "возврата ошибочно удержанных налогов",
+            kz: "қате ұсталған салықтарды қайтару",
+            en: "tax refund refund"
+        },
+        {
+            ru: "выплаты из Национального фонда детям и молодежи",
+            kz: "Ұлттық қордан балалар мен жастарға берілетін төлем",
+            en: "National Fund distribution"
+        }
+    ],
+    amounts: ["35 000 ₸", "50 000 ₸", "78 500 ₸", "125 000 ₸", "250 000 ₸"],
+    deepfakePersons: [
+        {
+            ru: "Известный казахстанский миллиардер",
+            kz: "Танымал қазақстандық миллиардер",
+            en: "Famous Kazakhstani billionaire"
+        },
+        {
+            ru: "Министр цифрового развития",
+            kz: "Цифрлық даму министрі",
+            en: "Minister of Digital Development"
+        },
+        {
+            ru: "Популярный блогер-инвестор",
+            kz: "Танымал блогер-инвестор",
+            en: "Popular investor blogger"
+        }
+    ],
     newsSources: ["Inform.kz", "Tengrinews.kz", "Kazinform", "24.kz", "Baribar.kz"]
 };
 
@@ -411,24 +452,25 @@ let userXP = 1000;
 let correctAnswers = 0;
 let wrongAnswers = 0;
 let threatsChart, accuracyChart;
-let usedAiCombinations = new Set(); 
+let usedAiCombinations = new Set();
 
 function generateRandomAICase() {
-    let brand, domain, amount, personIndex, typeIndex, isFake;
+    let brandObj, domain, amountObj, reasonObj, personObj, typeIndex, isFake;
     let comboKey = "";
     let attempts = 0;
 
     do {
-        isFake = Math.random() < 0.65;
+        isFake = Math.random() < 0.70; // 70% фейк, 30% ресми
         typeIndex = Math.floor(Math.random() * 3); // 0: sms, 1: deepfake, 2: official
-        brand = aiTemplates.smsBrands[Math.floor(Math.random() * aiTemplates.smsBrands.length)];
+        brandObj = aiTemplates.brands[Math.floor(Math.random() * aiTemplates.brands.length)];
         domain = aiTemplates.fakeDomains[Math.floor(Math.random() * aiTemplates.fakeDomains.length)];
-        amount = aiTemplates.amounts[Math.floor(Math.random() * aiTemplates.amounts.length)];
-        personIndex = Math.floor(Math.random() * aiTemplates.deepfakePersons.ru.length);
+        amountObj = aiTemplates.amounts[Math.floor(Math.random() * aiTemplates.amounts.length)];
+        reasonObj = aiTemplates.payoutReasons[Math.floor(Math.random() * aiTemplates.payoutReasons.length)];
+        personObj = aiTemplates.deepfakePersons[Math.floor(Math.random() * aiTemplates.deepfakePersons.length)];
         
-        comboKey = `${typeIndex}-${brand}-${domain}-${amount}-${personIndex}-${isFake}`;
+        comboKey = `${typeIndex}-${brandObj.name}-${domain}-${amountObj}-${isFake}-${Math.random()}`;
         attempts++;
-    } while (usedAiCombinations.has(comboKey) && attempts < 100);
+    } while (usedAiCombinations.has(comboKey) && attempts < 50);
 
     usedAiCombinations.add(comboKey);
 
@@ -438,93 +480,89 @@ function generateRandomAICase() {
 
     let generatedCase = {
         id: cases.length + 1,
-        url: isFake ? `https://${domain}/login` : `https://${brand.toLowerCase().replace(/\s+/g, '').replace('.kz','')}.kz`,
+        url: isFake ? `https://${domain}/verify-id` : `https://${brandObj.domain}/news`,
         mediaIcon: mediaType === "sms" ? "fa-comment-dots" : (mediaType === "deepfake" ? "fa-robot" : "fa-newspaper"),
         mediaType: mediaType,
         isFake: isFake,
         whoisData: { 
-            domain: isFake ? domain : `${brand.toLowerCase().replace(/\s+/g, '').replace('.kz','')}.kz`, 
+            domain: isFake ? domain : brandObj.domain, 
             createdDays: isFake ? Math.floor(Math.random() * 5) + 1 : null, 
             createdYears: isFake ? null : Math.floor(Math.random() * 10) + 5,
             riskKey: isFake ? "riskHigh" : "riskSafe" 
         },
         sslData: { 
-            issuer: isFake ? "Free Let's Encrypt CA" : "DigiCert Global Root", 
+            issuer: isFake ? "Free Let's Encrypt / Unknown Authority" : "DigiCert Global Root CA", 
             statusKey: isFake ? "sslInvalid" : "sslGovValid" 
         }
     };
 
     if (mediaType === "sms") {
         generatedCase.mediaPreview = {
-            sender: isFake ? `SMS-INFO (${brand.toUpperCase()})` : brand,
+            sender: isFake ? `PAYOUT-INFO (${brandObj.name})` : brandObj.name,
             text: {
                 ru: isFake 
-                    ? `Вам начислена соц. компенсация (${amount})! Для активации зачислите средства через: http://${domain}/login`
-                    : `Операция по вашей карте выполнена успешно. Справки и выписки на официальном портале: ${brand.toLowerCase().replace(/\s+/g, '').replace('.kz','')}.kz`,
+                    ? `Вам начислено ${amountObj} в рамках ${reasonObj.ru}! Заберите средства по ссылке: http://${domain}/verify-id`
+                    : `Уведомление: Вам поступил официальный перевод. Подробности в приложении ${brandObj.name} или на ${brandObj.domain}.`,
                 kz: isFake 
-                    ? `Сіздің шотыңызға әлеуметтік төлемақы (${amount}) есептелді! Белсендіру үшін өтіңіз: http://${domain}/login`
-                    : `Сіздің шотыңыздан операция сәтті өтті. Анықтама үшін: ${brand.toLowerCase().replace(/\s+/g, '').replace('.kz','')}.kz`,
+                    ? `Сізге ${reasonObj.kz} аясында ${amountObj} есептелді! Ақшаны алу үшін сілтемеге өтіңіз: http://${domain}/verify-id`
+                    : `Хабарлама: Сізге ресми аударым түсті. Толығырақ ${brandObj.name} қосымшасында немесе ${brandObj.domain} сайтында.`,
                 en: isFake 
-                    ? `Social payout of (${amount}) credited! Activate via link: http://${domain}/login`
-                    : `Transaction completed successfully. Info on official portal: ${brand.toLowerCase().replace(/\s+/g, '').replace('.kz','')}.kz`
+                    ? `You received ${amountObj} as part of ${reasonObj.en}! Claim funds at: http://${domain}/verify-id`
+                    : `Notice: Official transfer received. Details in ${brandObj.name} app or ${brandObj.domain}.`
             }
         };
         generatedCase.content = {
             ru: {
                 category: isFake ? "Фишинг" : "Официально",
-                title: `Уведомление от имени ${brand}`,
-                description: `Пришло SMS-сообщение о зачислении средств (${amount}). Требуется подтверждение аккаунта.`,
-                explanation: isFake ? "Это фишинг! Домен не принадлежит официальной организации." : "Это официальное сообщение от проверенного сервиса.",
-                lesson: "<strong>💡 Урок:</strong> Всегда проверяйте доменное имя в текстах SMS. Настоящие службы не используют `.xyz` или `.site`."
+                title: `Выплата средств: ${amountObj} (${brandObj.name})`,
+                description: `Сообщение о начислении средств в размере ${amountObj}. Предлагается перейти по указанной ссылке.`,
+                explanation: isFake ? `Это алаяқтар (фишинг)! Домен ${domain} не принадлежит ${brandObj.name}.` : "Это официальное системное уведомление.",
+                lesson: "<strong>💡 Урок:</strong> Никогда не вводите личные данные и пароли на сторонних сайтах, отличающихся от официального домена!"
             },
             kz: {
                 category: isFake ? "Фишинг" : "Ресми",
-                title: `${brand} атынан хабарлама`,
-                description: `Сізге қаражат түскені туралы SMS келді (${amount}). Аккаунтты растау талап етіледі.`,
-                explanation: isFake ? "Бұл фишинг! Домен ресми ұйымға тиесілі емес." : "Бұл тексерілген сервистің ресми хабарламасы.",
-                lesson: "<strong>💡 Сабақ:</strong> SMS-тегі сілтемелердің домендік атын әрдайым тексеріңіз. Нағыз ұйымдар `.xyz` немесе `.site` қолданбайды."
+                title: `Қаражат төлемі: ${amountObj} (${brandObj.name})`,
+                description: `${amountObj} көлемінде қаражат түскені туралы хабарлама. Көрсетілген сілтемеге өту ұсынылады.`,
+                explanation: isFake ? `Бұл алаяқтар (фишинг)! ${domain} домені ${brandObj.name} ұйымына мүлдем тиесілі емес.` : "Бұл ресми жүйелік хабарлама.",
+                lesson: "<strong>💡 Сабақ:</strong> Ресми доменнен өзгеше бөгде сайттарда ешқашан жеке деректер мен құпия сөздерді енгізбеңіз!"
             },
             en: {
                 category: isFake ? "Phishing" : "Official",
-                title: `Notification from ${brand}`,
-                description: `Received SMS regarding funds deposit (${amount}). Account verification requested.`,
-                explanation: isFake ? "This is phishing! Domain does not belong to the official entity." : "This is an official message from a verified service.",
-                lesson: "<strong>💡 Lesson:</strong> Always verify domain names in SMS links. Official services don't use `.xyz` or `.site`."
+                title: `Payout Alert: ${amountObj} (${brandObj.name})`,
+                description: `Notification claiming a deposit of ${amountObj}. Prompts to follow the provided web link.`,
+                explanation: isFake ? `This is phishing! The domain ${domain} does not belong to ${brandObj.name}.` : "This is an authentic system notification.",
+                lesson: "<strong>💡 Lesson:</strong> Never enter personal details or passwords on unofficial domain links!"
             }
         };
     } else if (mediaType === "deepfake") {
-        const pRu = aiTemplates.deepfakePersons.ru[personIndex];
-        const pKz = aiTemplates.deepfakePersons.kz[personIndex];
-        const pEn = aiTemplates.deepfakePersons.en[personIndex];
-
         generatedCase.mediaPreview = {
             artifacts: {
-                ru: isFake ? ["⚠️ Размытие вокруг губ", "⚠️ Синтезированный ИИ-голос", "⚠️ Неестественные мигания глаз"] : ["✅ Высокое разрешение", "✅ Естественная мимика"],
-                kz: isFake ? ["⚠️ Ерін айналасы бұлыңғыр", "⚠️ ЖИ синтезделген дауыс", "⚠️ Көздің табиғи емес жыпылықтауы"] : ["✅ Жоғары ажыратылымдық", "✅ Табиғи мимика"],
-                en: isFake ? ["⚠️ Blur around lips", "⚠️ AI voice synthesis", "⚠️ Unnatural eye blinking"] : ["✅ High resolution", "✅ Natural expression"]
+                ru: isFake ? ["⚠️ Неестественная мимика губ", "⚠️ ИИ-синтез голоса", "⚠️ Мерцание кадров вокруг лица"] : ["✅ Высокое качество видео", "✅ Синхронная мимика"],
+                kz: isFake ? ["⚠️ Ерін мимикасы табиғи емес", "⚠️ ЖИ-дауыс синтезі", "⚠️ Бет айналасындағы кадрлардың дірілі"] : ["✅ Жоғары видео сапасы", "✅ Синхронды мимика"],
+                en: isFake ? ["⚠️ Unnatural lip movement", "⚠️ AI voice synthesis", "⚠️ Artifacts around facial contours"] : ["✅ High video quality", "✅ Natural sync"]
             }
         };
         generatedCase.content = {
             ru: {
                 category: isFake ? "Дипфейк" : "Официально",
-                title: `Видеообращение: ${pRu}`,
-                description: isFake ? `В соцсетях распространяется видео, где ${pRu} предлагает гарантированный пассивный доход ${amount}.` : `Официальное выступление на государственном телевидении.`,
-                explanation: isFake ? "Видео сгенерировано ИИ (дипфейк). Обратите внимание на дефекты речи и артефакты." : "Настоящая подлинная видеозапись.",
-                lesson: "<strong>💡 Урок:</strong> Никакие официальные лица не предлагают «быстрый пассивный доход» в соцсетях."
+                title: `Видеообращение: ${personObj.ru}`,
+                description: isFake ? `В соцсетях вирусное видео: ${personObj.ru} обещат выплатy ${amountObj} каждому гражданину.` : `Официальное выступление на государственном телеканале.`,
+                explanation: isFake ? "Видео полностью сгенерировано нейросетью (дипфейк) для сбора карт!" : "Настоящее интервью из официального источника.",
+                lesson: "<strong>💡 Урок:</strong> Обращайте внимание на мимику, неестественные паузы в речи и роботизированный голос."
             },
             kz: {
                 category: isFake ? "Дипфейк" : "Ресми",
-                title: `Бейнежолдау: ${pKz}`,
-                description: isFake ? `Әлеуметтік желіде ${pKz} ${amount} көлемінде кепілдендірілген табыс ұсынатын видео таралуда.` : `Мемлекеттік телеарнадағы ресми сөз сөйлеу.`,
-                explanation: isFake ? "Бейне ЖИ арқылы жасалған (дипфейк). Бет пен дауыс артефакттарына назар аударыңыз." : "Нағыз түпнұсқа бейнежазба.",
-                lesson: "<strong>💡 Сабақ:</strong> Ешқандай ресми тұлғалар әлеуметтік желіде «тез баю» немесе «оңай табыс» ұсынбайды."
+                title: `Бейнежолдау: ${personObj.kz}`,
+                description: isFake ? `Желіде тараған видео: ${personObj.kz} әр азаматқа ${amountObj} төлем беруге уәде береді.` : `Мемлекеттік телеарнадағы ресми сұхбат.`,
+                explanation: isFake ? "Видео карта деректерін ұрлау үшін нейрожелімен (дипфейк) жасалған!" : "Ресми дереккөзден алынған нағыз сұхбат.",
+                lesson: "<strong>💡 Сабақ:</strong> Бет мимикасына, сөйлеудегі табиғи емес кідірістерге және дауыс ырғағына мұқият қараңыз."
             },
             en: {
                 category: isFake ? "Deepfake" : "Official",
-                title: `Video Address: ${pEn}`,
-                description: isFake ? `A video is circulating where ${pEn} promises guaranteed income of ${amount}.` : `Official statement on public TV.`,
-                explanation: isFake ? "Generated by AI (deepfake). Notice the unnatural lip sync and artifacts." : "Authentic official video recording.",
-                lesson: "<strong>💡 Lesson:</strong> Official figures never offer 'easy passive income' schemes on social networks."
+                title: `Video Speech: ${personObj.en}`,
+                description: isFake ? `Viral video: ${personObj.en} promises ${amountObj} to every citizen.` : `Official broadcast on public television.`,
+                explanation: isFake ? "Video generated by AI (deepfake) to steal banking information!" : "Authentic interview from official media.",
+                lesson: "<strong>💡 Lesson:</strong> Watch closely for artificial lip movements, unnatural pauses, and robotic cadence."
             }
         };
     } else {
@@ -533,23 +571,23 @@ function generateRandomAICase() {
             ru: {
                 category: isFake ? "Фейк" : "Официально",
                 title: `Публикация на портале ${source}`,
-                description: isFake ? `Срочная рассылка: запуск новой социальной выплаты без подачи документов.` : `Официальное сообщение о внедрении цифровых документов в образовании.`,
-                explanation: isFake ? "Фейковая рассылка! Информация отсутствует в официальных источниках." : "Официальная проверенная новость.",
-                lesson: "<strong>💡 Урок:</strong> Сверяйте новости с официальными порталами eGov.kz и Министерства."
+                description: isFake ? `Срочная новость: Все граждане могут подать заявку на ${amountObj} без документов.` : `Официальная новость о запуске новых государственных программ развития.`,
+                explanation: isFake ? "Фейковая рассылка! Нет подтверждения в нормативно-правовых актах РК." : "Официальная проверенная публикация.",
+                lesson: "<strong>💡 Урок:</strong> Перепроверяйте резонансные новости о выплатах на официальных ресурсах типа eGov.kz или Akorda.kz."
             },
             kz: {
                 category: isFake ? "Фейк" : "Ресми",
                 title: `${source} порталындағы жарияланым`,
-                description: isFake ? `Шұғыл таратылым: құжаттарсыз жаңа әлеуметтік төлемнің іске қосылуы.` : `Білім беруге сандық құжаттарды енгізу туралы ресми хабарлама.`,
-                explanation: isFake ? "Фейк таратылым! Ақпарат ресми дереккөздерде жоқ." : "Тексерілген ресми жаңалық.",
-                lesson: "<strong>💡 Сабақ:</strong> Жаңалықтарды eGov.kz және Мемлекеттік Органдардың ресми сайттарымен салыстырыңыз."
+                description: isFake ? `Шұғыл жаңалық: Барлық азаматтар құжатсыз-ақ ${amountObj} алуға өтінім бере алады.` : `Жаңа мемлекеттік даму бағдарламаларының іске қосылуы туралы ресми жаңалық.`,
+                explanation: isFake ? "Фейк таратылым! ҚР нормативтік-құқықтық актілерінде бұл туралы ақпарат жоқ." : "Ресми тексерілген жарияланым.",
+                lesson: "<strong>💡 Сабақ:</strong> Төлемдер туралы ақпаратты eGov.kz немесе Akorda.kz сияқты ресми ресурстардан қайта тексеріңіз."
             },
             en: {
                 category: isFake ? "Fake" : "Official",
-                title: `Publication on ${source}`,
-                description: isFake ? `Urgent viral alert: launch of new payout without document submission.` : `Official news on digital document integration in education.`,
-                explanation: isFake ? "Fake news broadcast! Information not found on official channels." : "Verified official news.",
-                lesson: "<strong>💡 Lesson:</strong> Always cross-check news with official portals like eGov.kz."
+                title: `News on ${source}`,
+                description: isFake ? `Breaking news: Citizens can claim ${amountObj} with zero verification.` : `Official press release regarding state development initiatives.`,
+                explanation: isFake ? "Fake news chain! Not supported by official government decrees." : "Authentic news report from trusted agency.",
+                lesson: "<strong>💡 Lesson:</strong> Always cross-reference news about government payouts on eGov.kz or official ministry portals."
             }
         };
     }
@@ -585,11 +623,11 @@ function changeLanguage(lang) {
     if (document.getElementById("t-whois-btn")) document.getElementById("t-whois-btn").innerText = t.whoisBtn;
     if (document.getElementById("t-ssl-btn")) document.getElementById("t-ssl-btn").innerText = t.sslBtn;
 
-    // eGov / Cyberpol аудармасы
-    if (document.getElementById("t-egov-title")) document.getElementById("t-egov-title").innerText = t.egovTitle;
-    if (document.getElementById("t-egov-desc")) document.getElementById("t-egov-desc").innerText = t.egovDesc;
-    if (document.getElementById("t-cert-link")) document.getElementById("t-cert-link").innerText = t.certLink;
-    if (document.getElementById("t-egov-link")) document.getElementById("t-egov-link").innerText = t.egovLink;
+    // --- БЛОК КИБЕРПОЛ И EGOV ДИНАМИКАЛЫҚ АУДАРМАСЫ ---
+    if (document.getElementById("t-cyberpol-title")) document.getElementById("t-cyberpol-title").innerText = t.cyberpolTitle;
+    if (document.getElementById("t-cyberpol-desc")) document.getElementById("t-cyberpol-desc").innerText = t.cyberpolDesc;
+    if (document.getElementById("t-cert-btn")) document.getElementById("t-cert-btn").innerText = t.certBtn;
+    if (document.getElementById("t-egov-btn")) document.getElementById("t-egov-btn").innerText = t.egovBtn;
 
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
@@ -858,11 +896,11 @@ function addNewCase(event) {
     if (event) event.preventDefault();
     const t = i18n[currentLang];
 
-    const title = document.getElementById("new-title")?.value || "Пайдаланушы кейсі";
+    const title = document.getElementById("new-title")?.value || "Пользовательский кейс";
     const url = document.getElementById("new-url")?.value || "https://custom-link.kz";
     const category = document.getElementById("new-category")?.value || "Фейк";
     const isFake = document.getElementById("new-isfake")?.value === "true";
-    const desc = document.getElementById("new-desc")?.value || "Сипаттамасы жоқ.";
+    const desc = document.getElementById("new-desc")?.value || "Описание отсутствует.";
 
     const customCase = {
         id: cases.length + 1,
