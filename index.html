@@ -250,165 +250,247 @@
     </div>
 
     <script src="app.js"></script>
-    <!-- CyberSaq AI Assistant Widget -->
+   <!-- CyberSaq AI Assistant Widget (Neo-Brutalism Style) -->
 <style>
   #cybersaq-widget-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    font-size: 16px;
+    bottom: 24px;
+    right: 24px;
+    background: #ffde59;
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 900;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 1000;
+    box-shadow: 4px 4px 0px #000;
+    z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: inherit;
-    transition: transform 0.2s;
+    transition: transform 0.1s, box-shadow 0.1s;
   }
   #cybersaq-widget-btn:hover {
-    transform: scale(1.05);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
   }
   #cybersaq-chat-window {
     position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 350px;
-    height: 450px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    z-index: 1000;
+    bottom: 90px;
+    right: 24px;
+    width: 380px;
+    height: 480px;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 16px;
+    box-shadow: 8px 8px 0px #000;
+    z-index: 9999;
     display: none;
     flex-direction: column;
     overflow: hidden;
     font-family: inherit;
   }
   #cybersaq-chat-header {
-    background: #4f46e5;
-    color: white;
-    padding: 12px 16px;
+    background: #ffde59;
+    color: #000;
+    padding: 14px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
+    font-weight: 900;
+    border-bottom: 3px solid #000;
+    font-size: 16px;
   }
   #cybersaq-chat-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
+    background: #ff5252;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    font-weight: bold;
+    font-size: 14px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 0px #000;
+  }
+  #cybersaq-chat-close:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
   }
   #cybersaq-chat-messages {
     flex: 1;
-    padding: 12px;
+    padding: 14px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    background: #f9fafb;
+    gap: 10px;
+    background: #fdfdfd;
     font-size: 14px;
   }
   .chat-msg {
-    padding: 8px 12px;
-    border-radius: 8px;
-    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    max-width: 85%;
     line-height: 1.4;
+    word-break: break-word;
+    font-weight: 500;
   }
   .chat-msg.user {
-    background: #4f46e5;
-    color: white;
+    background: #ffde59;
+    color: #000;
     align-self: flex-end;
+    box-shadow: 3px 3px 0px #000;
   }
   .chat-msg.ai {
-    background: #e5e7eb;
-    color: #1f2937;
+    background: #e0f2fe;
+    color: #000;
     align-self: flex-start;
+    box-shadow: 3px 3px 0px #000;
   }
   #cybersaq-chat-input-area {
     display: flex;
-    padding: 8px;
-    background: white;
-    border-top: 1px solid #e5e7eb;
+    padding: 10px;
+    background: #fff;
+    border-top: 3px solid #000;
+    gap: 8px;
   }
   #cybersaq-chat-input {
     flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
+    padding: 10px 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
     outline: none;
     font-size: 14px;
+    font-weight: 600;
   }
   #cybersaq-chat-send {
-    background: #4f46e5;
-    color: white;
-    border: none;
+    background: #ff5252;
+    color: #fff;
+    border: 2px solid #000;
     padding: 8px 14px;
-    margin-left: 6px;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-weight: 900;
     cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+  }
+  #cybersaq-chat-send:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
   }
 </style>
 
 <!-- Кнопка вызова виджета -->
 <button id="cybersaq-widget-btn" onclick="toggleChat()">
-  💬 CyberSaq Сұрақ қою
+  🛡️ CyberSaq AI
 </button>
 
 <!-- Окно чата -->
 <div id="cybersaq-chat-window">
   <div id="cybersaq-chat-header">
-    <span>🤖 CyberSaq AI Кеңесшісі</span>
+    <span id="widget-title">🤖 CyberSaq AI Assistant</span>
     <button id="cybersaq-chat-close" onclick="toggleChat()">✕</button>
   </div>
   <div id="cybersaq-chat-messages">
-    <div class="chat-msg ai">Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды қазақ немесе орыс тілінде қоя аласыз! 🛡️</div>
+    <div class="chat-msg ai" id="welcome-msg">Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды кез келген тілде қоя аласыз! 🛡️</div>
   </div>
   <div id="cybersaq-chat-input-area">
     <input type="text" id="cybersaq-chat-input" placeholder="Сұрақ жазу..." onkeypress="handleKeyPress(event)">
-    <button id="cybersaq-chat-send" onclick="sendMessage()">Жіберу</button>
+    <button id="cybersaq-chat-send" onclick="sendMessage()">➤</button>
   </div>
 </div>
 
 <script>
+  // Функция определения текущего языка сайта (проверяет активную кнопку KZ/RU/EN на странице)
+  function detectSiteLanguage() {
+    // Ищем активную кнопку переключения языка на вашем сайте
+    const activeLangBtn = document.querySelector('.lang-btn.active, button.active, [id*="lang"].active, .selected-lang');
+    if (activeLangBtn) {
+      const text = activeLangBtn.innerText.trim().toUpperCase();
+      if (text.includes('RU')) return 'ru';
+      if (text.includes('EN')) return 'en';
+      if (text.includes('KZ')) return 'kz';
+    }
+    
+    // Альтернативный поиск по всем кнопкам с текстом KZ/RU/EN
+    const buttons = document.querySelectorAll('button');
+    for (let btn of buttons) {
+      if (btn.innerText.trim() === 'EN' && (btn.style.borderColor || btn.style.background || btn.classList.contains('active'))) {
+        return 'en';
+      }
+      if (btn.innerText.trim() === 'RU' && (btn.style.borderColor || btn.style.background || btn.classList.contains('active'))) {
+        return 'ru';
+      }
+    }
+    return 'kz'; // По умолчанию казахский
+  }
+
+  // Обновление текстов интерфейса виджета в зависимости от языка
+  function updateWidgetLanguage() {
+    const lang = detectSiteLanguage();
+    const titleEl = document.getElementById('widget-title');
+    const inputEl = document.getElementById('cybersaq-chat-input');
+    const welcomeEl = document.getElementById('welcome-msg');
+    const btnEl = document.getElementById('cybersaq-widget-btn');
+
+    if (lang === 'ru') {
+      if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Эксперт";
+      if(inputEl) inputEl.placeholder = "Задайте вопрос о кибербезопасности...";
+      if(welcomeEl) welcomeEl.innerText = "Привет! Я кибер-ассистент CyberSaq. Задавайте любые вопросы на русском, казахском или английском языке! 🛡️";
+      if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq ИИ";
+    } else if (lang === 'en') {
+      if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Expert";
+      if(inputEl) inputEl.placeholder = "Ask a cybersecurity question...";
+      if(welcomeEl) welcomeEl.innerText = "Hello! I am CyberSaq AI Assistant. You can ask questions in English, Kazakh, or Russian! 🛡️";
+      if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq AI";
+    } else {
+      if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Кеңесшісі";
+      if(inputEl) inputEl.placeholder = "Киберқауіпсіздік туралы сұрақ...";
+      if(welcomeEl) welcomeEl.innerText = "Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды қазақ, орыс немесе ағылшын тілінде қоя аласыз! 🛡️";
+      if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq AI";
+    }
+  }
+
   function toggleChat() {
     const chatWindow = document.getElementById('cybersaq-chat-window');
-    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    const isOpen = chatWindow.style.display === 'flex';
+    chatWindow.style.display = isOpen ? 'none' : 'flex';
+    if (!isOpen) {
+      updateWidgetLanguage(); // Обновляем язык при открытии чата
+    }
   }
 
   async function sendMessage() {
     const inputField = document.getElementById('cybersaq-chat-input');
     const messageContainer = document.getElementById('cybersaq-chat-messages');
     const text = inputField.value.trim();
+    const currentLang = detectSiteLanguage();
     
     if (!text) return;
 
-    // Сообщение пользователя
+    // Добавляем сообщение пользователя
     messageContainer.innerHTML += `<div class="chat-msg user">${escapeHtml(text)}</div>`;
     inputField.value = '';
     messageContainer.scrollTop = messageContainer.scrollHeight;
 
-    // Сообщение о загрузке
     const loadingId = 'loading_' + Date.now();
-    messageContainer.innerHTML += `<div class="chat-msg ai" id="${loadingId}">ЖИ жауап дайындауда... ⏳</div>`;
+    const loadingText = currentLang === 'ru' ? 'ИИ думает... ⏳' : currentLang === 'en' ? 'AI is thinking... ⏳' : 'ЖИ ойлануда... ⏳';
+    messageContainer.innerHTML += `<div class="chat-msg ai" id="${loadingId}">${loadingText}</div>`;
     messageContainer.scrollTop = messageContainer.scrollHeight;
 
     try {
-      // Здесь мы обращаемся к Gemini API через публичный эндпоинт или твой бэкенд (либо можно подключить прямой вызов, если ключ уже используется в веб-версии)
-      // Для фронтенд-скрипта на GitHub Pages лучше всего использовать публичный вызов через Google GenAI SDK или интеграцию
-      const response = await callGeminiAPI(text);
-      
+      const responseText = await callGeminiAPI(text, currentLang);
       document.getElementById(loadingId).remove();
-      messageContainer.innerHTML += `<div class="chat-msg ai">${escapeHtml(response)}</div>`;
+      messageContainer.innerHTML += `<div class="chat-msg ai">${escapeHtml(responseText)}</div>`;
     } catch (error) {
       document.getElementById(loadingId).remove();
-      messageContainer.innerHTML += `<div class="chat-msg ai">⚠️ Қате орын алды. Кейінірек көріңіз.</div>`;
+      const errText = currentLang === 'ru' ? '⚠️ Ошибка соединения с ИИ. Попробуйте еще раз.' : currentLang === 'en' ? '⚠️ AI connection error. Try again.' : '⚠️ ЖИ байланыс қатесі. Қайталап көріңіз.';
+      messageContainer.innerHTML += `<div class="chat-msg ai">${errText}</div>`;
     }
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
@@ -423,31 +505,34 @@
     return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  // Заглушка/функция подключения к Gemini прямо из браузера (или через твой прокси)
-  async function callGeminiAPI(promptText) {
-    // Поскольку ключи API светить на фронтенде (GitHub Pages) небезопасно, 
-    // здесь можно использовать защищенный эндпоинт или интеграцию с готовым сервисом (Typebot/Voiceflow), 
-    // либо сделать прямой запрос, если проект демонстрационный.
-    
-    const apiKey = "AQ.Ab8RN6I0Z3mG6ocTTxUWztP7AMfHuuLlvihzL1Ckz7FLxjaraw"; // Твой ключ для тестов
-    
+  async function callGeminiAPI(promptText, lang) {
+    const apiKey = "AQ.Ab8RN6LJoZzxJKMnj298_SOAOgtSXPRjeXFf2g_OXZVmRBuOvA";
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
     
+    let langInstruction = "Respond in Kazakh language.";
+    if (lang === 'ru') langInstruction = "Отвечай строго на русском языке.";
+    if (lang === 'en') langInstruction = "Respond strictly in English.";
+
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{
-          parts: [{ text: "Ты киберэксперт проекта CyberSaq. Отвечай кратко, понятно и полезно на вопрос пользователя: " + promptText }]
+          parts: [{ 
+            text: `You are CyberSaq cybersecurity mentor. ${langInstruction} Answer clearly, helpfully, and concisely to this user question: ${promptText}` 
+          }]
         }]
       })
     });
 
     const data = await response.json();
-    if (data.candidates && data.candidates[0].content) {
-      return data.candidates[0].parts[0].text;
+    if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts) {
+      return data.candidates[0].content.parts[0].text;
+    } else if (data.error) {
+      console.error("API Error:", data.error);
+      return lang === 'ru' ? "Ошибка API ключа." : lang === 'en' ? "API key error." : "API кілт қатесі.";
     } else {
-      return "Жауап алу мүмкін болмады.";
+      return lang === 'ru' ? "Не удалось получить ответ." : lang === 'en' ? "Could not get response." : "Жауап алынбады.";
     }
   }
 </script>
