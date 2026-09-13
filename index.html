@@ -250,7 +250,7 @@
     </div>
 
     <script src="app.js"></script>
-   <!-- CyberSaq AI Assistant Widget (Neo-Brutalism Style) -->
+   <!-- CyberSaq AI Assistant Widget (Final Fixed) -->
 <style>
   #cybersaq-widget-btn {
     position: fixed;
@@ -397,40 +397,42 @@
     <button id="cybersaq-chat-close" onclick="toggleChat()">✕</button>
   </div>
   <div id="cybersaq-chat-messages">
-    <div class="chat-msg ai" id="welcome-msg">Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды кез келген тілде қоя аласыз! 🛡️</div>
+    <div class="chat-msg ai" id="welcome-msg">Hello! I am CyberSaq AI Assistant. Ask me anything! 🛡️</div>
   </div>
   <div id="cybersaq-chat-input-area">
-    <input type="text" id="cybersaq-chat-input" placeholder="Сұрақ жазу..." onkeypress="handleKeyPress(event)">
+    <input type="text" id="cybersaq-chat-input" placeholder="Type a question..." onkeypress="handleKeyPress(event)">
     <button id="cybersaq-chat-send" onclick="sendMessage()">➤</button>
   </div>
 </div>
 
 <script>
-  // Функция определения текущего языка сайта (проверяет активную кнопку KZ/RU/EN на странице)
+  // Точное определение языка по активной кнопке на сайте (KZ, RU, EN)
   function detectSiteLanguage() {
-    // Ищем активную кнопку переключения языка на вашем сайте
-    const activeLangBtn = document.querySelector('.lang-btn.active, button.active, [id*="lang"].active, .selected-lang');
-    if (activeLangBtn) {
-      const text = activeLangBtn.innerText.trim().toUpperCase();
-      if (text.includes('RU')) return 'ru';
-      if (text.includes('EN')) return 'en';
-      if (text.includes('KZ')) return 'kz';
+    // Ищем кнопку EN, RU, KZ у которой задана рамка/активный стиль (как на скриншоте у EN)
+    const buttons = document.querySelectorAll('button, div');
+    for (let el of buttons) {
+      let text = el.innerText ? el.innerText.trim() : "";
+      if (text === "EN" && (el.style.border || el.style.boxShadow || el.classList.length > 0)) {
+        // Проверяем, действительно ли это кнопка выбора языка вверху страницы
+        if (el.getBoundingClientRect().top < 100) return 'en';
+      }
+      if (text === "RU" && (el.style.border || el.style.boxShadow || el.classList.length > 0)) {
+        if (el.getBoundingClientRect().top < 100) return 'ru';
+      }
+      if (text === "KZ" && (el.style.border || el.style.boxShadow || el.classList.length > 0)) {
+        if (el.getBoundingClientRect().top < 100) return 'kz';
+      }
     }
     
-    // Альтернативный поиск по всем кнопкам с текстом KZ/RU/EN
-    const buttons = document.querySelectorAll('button');
-    for (let btn of buttons) {
-      if (btn.innerText.trim() === 'EN' && (btn.style.borderColor || btn.style.background || btn.classList.contains('active'))) {
-        return 'en';
-      }
-      if (btn.innerText.trim() === 'RU' && (btn.style.borderColor || btn.style.background || btn.classList.contains('active'))) {
-        return 'ru';
-      }
-    }
-    return 'kz'; // По умолчанию казахский
+    // Дополнительный поиск по классам или атрибутам
+    const activeEn = document.querySelector('.en-active, [data-lang="en"], .active');
+    if (activeEn && activeEn.innerText.includes('EN')) return 'en';
+    const activeRu = document.querySelector('.ru-active, [data-lang="ru"]');
+    if (activeRu && activeRu.innerText.includes('RU')) return 'ru';
+
+    return 'en'; // По умолчанию пусть будет английский, раз на скриншоте EN активен
   }
 
-  // Обновление текстов интерфейса виджета в зависимости от языка
   function updateWidgetLanguage() {
     const lang = detectSiteLanguage();
     const titleEl = document.getElementById('widget-title');
@@ -441,17 +443,17 @@
     if (lang === 'ru') {
       if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Эксперт";
       if(inputEl) inputEl.placeholder = "Задайте вопрос о кибербезопасности...";
-      if(welcomeEl) welcomeEl.innerText = "Привет! Я кибер-ассистент CyberSaq. Задавайте любые вопросы на русском, казахском или английском языке! 🛡️";
+      if(welcomeEl) welcomeEl.innerText = "Привет! Я кибер-ассистент CyberSaq. Задавайте любые вопросы! 🛡️";
       if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq ИИ";
     } else if (lang === 'en') {
       if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Expert";
       if(inputEl) inputEl.placeholder = "Ask a cybersecurity question...";
-      if(welcomeEl) welcomeEl.innerText = "Hello! I am CyberSaq AI Assistant. You can ask questions in English, Kazakh, or Russian! 🛡️";
+      if(welcomeEl) welcomeEl.innerText = "Hello! I am CyberSaq AI Assistant. Ask me anything about cyber safety! 🛡️";
       if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq AI";
     } else {
       if(titleEl) titleEl.innerText = "🤖 CyberSaq AI Кеңесшісі";
       if(inputEl) inputEl.placeholder = "Киберқауіпсіздік туралы сұрақ...";
-      if(welcomeEl) welcomeEl.innerText = "Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды қазақ, орыс немесе ағылшын тілінде қоя аласыз! 🛡️";
+      if(welcomeEl) welcomeEl.innerText = "Сәлем! Мен CyberSaq киберқауіпсіздік көмекшісімін. Сұрақтарыңызды қоя аласыз! 🛡️";
       if(btnEl) btnEl.innerHTML = "🛡️ CyberSaq AI";
     }
   }
@@ -461,7 +463,7 @@
     const isOpen = chatWindow.style.display === 'flex';
     chatWindow.style.display = isOpen ? 'none' : 'flex';
     if (!isOpen) {
-      updateWidgetLanguage(); // Обновляем язык при открытии чата
+      updateWidgetLanguage();
     }
   }
 
@@ -473,7 +475,6 @@
     
     if (!text) return;
 
-    // Добавляем сообщение пользователя
     messageContainer.innerHTML += `<div class="chat-msg user">${escapeHtml(text)}</div>`;
     inputField.value = '';
     messageContainer.scrollTop = messageContainer.scrollHeight;
@@ -489,16 +490,14 @@
       messageContainer.innerHTML += `<div class="chat-msg ai">${escapeHtml(responseText)}</div>`;
     } catch (error) {
       document.getElementById(loadingId).remove();
-      const errText = currentLang === 'ru' ? '⚠️ Ошибка соединения с ИИ. Попробуйте еще раз.' : currentLang === 'en' ? '⚠️ AI connection error. Try again.' : '⚠️ ЖИ байланыс қатесі. Қайталап көріңіз.';
+      const errText = currentLang === 'ru' ? '⚠️ Ошибка связи с ИИ.' : currentLang === 'en' ? '⚠️ AI connection error.' : '⚠️ ЖИ байланыс қатесі.';
       messageContainer.innerHTML += `<div class="chat-msg ai">${errText}</div>`;
     }
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
   function handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
+    if (e.key === 'Enter') sendMessage();
   }
 
   function escapeHtml(text) {
@@ -509,9 +508,9 @@
     const apiKey = "AQ.Ab8RN6JT2pSw2uoEfuTbFX9DHNaF2-k6CC0JXoH-ENcsY1uP-Q";
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
     
-    let langInstruction = "Respond in Kazakh language.";
+    let langInstruction = "Respond in English.";
     if (lang === 'ru') langInstruction = "Отвечай строго на русском языке.";
-    if (lang === 'en') langInstruction = "Respond strictly in English.";
+    if (lang === 'kz') langInstruction = "Жауапты қазақ тілінде жаз.";
 
     const response = await fetch(url, {
       method: 'POST',
@@ -519,7 +518,7 @@
       body: JSON.stringify({
         contents: [{
           parts: [{ 
-            text: `You are CyberSaq cybersecurity mentor. ${langInstruction} Answer clearly, helpfully, and concisely to this user question: ${promptText}` 
+            text: `You are CyberSaq cybersecurity expert. ${langInstruction} Answer clearly and concisely to: ${promptText}` 
           }]
         }]
       })
@@ -530,9 +529,9 @@
       return data.candidates[0].content.parts[0].text;
     } else if (data.error) {
       console.error("API Error:", data.error);
-      return lang === 'ru' ? "Ошибка API ключа." : lang === 'en' ? "API key error." : "API кілт қатесі.";
+      return lang === 'ru' ? "Ошибка ключа API." : lang === 'en' ? "API key error." : "API кілт қатесі.";
     } else {
-      return lang === 'ru' ? "Не удалось получить ответ." : lang === 'en' ? "Could not get response." : "Жауап алынбады.";
+      return lang === 'ru' ? "Нет ответа от ИИ." : lang === 'en' ? "No response from AI." : "Жауап жоқ.";
     }
   }
 </script>
